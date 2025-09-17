@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Recommendations - AvsarX</title>
+    <link rel="stylesheet" href="../css/main.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <script type="module" src="https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Finternmatc6600back.builtwithrocket.new&_be=https%3A%2F%2Fapplication.rocket.new&_v=0.1.8"></script>
+  </head>
+  <body class="bg-background min-h-screen">
+    <!-- Header Navigation -->
+    <header class="bg-white shadow-sm border-b border-slate-100 sticky top-0 z-40">
+      <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+          <!-- Logo -->
+          <div class="flex items-center">
+            <img src="AvsarX-2-removebg-preview.png" alt="AvsarX Logo" class="h-8 w-8 mr-2" />
+            <span class="text-xl font-bold text-blue-600 font-accent">AvsarX</span>
+          </div>
+
+          <!-- Desktop Navigation -->
+          <div class="hidden md:flex items-center space-x-8">
+            <a href="homepage.html" class="text-slate-600 hover:text-primary transition-smooth">Home</a>
+            <a href="opportunity_explorer.html" class="text-slate-600 hover:text-primary transition-smooth">Opportunities</a>
+            <a href="company_profiles.html" class="text-slate-600 hover:text-primary transition-smooth">Companies</a>
+            <a href="profile_builder.html" class="btn-primary">Build Profile</a>
+          </div>
+
+          <!-- Mobile Menu Button -->
+          <button class="md:hidden p-2" id="mobile-menu-btn">
+            <svg class="h-6 w-6 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+        </div>
+      </nav>
+
+      <!-- Mobile Menu -->
+      <div class="md:hidden hidden bg-white border-t border-slate-100" id="mobile-menu">
+        <div class="px-4 py-2 space-y-2">
+          <a href="homepage.html" class="block py-2 text-slate-600">Home</a>
+          <a href="opportunity_explorer.html" class="block py-2 text-slate-600">Opportunities</a>
+          <a href="company_profiles.html" class="block py-2 text-slate-600">Companies</a>
+          <a href="profile_builder.html" class="block py-2 text-primary font-semibold">Build Profile</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div class="flex flex-col lg:flex-row gap-8">
+        <!-- Main Dashboard Content -->
+        <div class="flex-1">
+          <!-- Welcome Section -->
+          <div class="mb-8">
+            <div class="flex items-center justify-between mb-4">
+              <div>
+                <h1 class="text-3xl font-bold text-slate-800 mb-2">आपके लिए Perfect Matches</h1>
+                <p class="text-lg text-slate-600">AI ने आपकी skills के आधार पर ये opportunities चुनी हैं</p>
+              </div>
+              <div class="hidden md:flex items-center space-x-4">
+                <button class="btn-accent" onclick="refreshMatches()">
+                  <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                    <path
+                      fill-rule="evenodd"
+                      d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z"
+                      clip-rule="evenodd" />
+                  </svg>
+                  Refresh Matches
+                </button>
+              </div>
+            </div>
+
+            <!-- Match Statistics -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+              <div class="bg-primary-50 rounded-lg p-4 text-center">
+                <div class="text-2xl font-bold text-primary mb-1">5</div>
+                <div class="text-sm text-primary-700">Perfect Matches</div>
+              </div>
+              <div class="bg-accent-50 rounded-lg p-4 text-center">
+                <div class="text-2xl font-bold text-accent mb-1">92%</div>
+                <div class="text-sm text-accent-700">Match Score</div>
+              </div>
+              <div class="bg-success-50 rounded-lg p-4 text-center">
+                <div class="text-2xl font-bold text-success mb-1">3</div>
+                <div class="text-sm text-success-700">Applications</div>
+              </div>
+              <div class="bg-secondary-50 rounded-lg p-4 text-center">
+                <div class="text-2xl font-bold text-secondary mb-1">12</div>
+                <div class="text-sm text-secondary-700">Profile Views</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Your Matches Section -->
+          <div class="mb-8">
+            <h2 class="text-2xl font-bold text-slate-800 mb-6">Your Perfect Matches</h2>
+
+            <!-- Match Card 1 -->
+            <div class="card mb-6 border-l-4 border-l-success-500">
+              <div class="flex flex-col lg:flex-row lg:items-center justify-between mb-4">
+                <div class="flex items-center mb-4 lg:mb-0">
+                  <img
+                    src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?q=80&w=80&auto=format&fit=crop"
+                    alt="TechCorp Logo"
+                    class="w-16 h-16 rounded-lg object-cover mr-4"
+                    onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;" />
+                  <div>
+                    <h3 class="text-xl font-semibold text-slate-800">Software Development Intern</h3>
+                    <p class="text-slate-600">TechCorp Solutions</p>
+                    <div class="flex items-center mt-1">
+                      <svg class="w-4 h-4 text-slate-400 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
+                      </svg>
+                      <span class="text-sm text-slate-600">Pune, Maharashtra</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="flex items-center space-x-4">
+                  <div class="text-center">
+                    <div class="text-2xl font-bold text-success-600">94%</div>
+                    <div class="text-xs text-slate-600">Match</div>
+                  </div>
+                  <div class="text-center">
+                    <div class="text-lg font-semibold text-accent-600">₹25,000</div>
+                    <div class="text-xs text-slate-600">per month</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                <div>
+                  <h4 class="font-semibold text-slate-700 mb-2">Key Requirements</h4>
+                  <div class="flex flex-wrap gap-2">
+                    <span class="px-2 py-1 bg-primary-100 text-primary-700 text-xs rounded-full">React</span>
+                    <span class="px-2 py-1 bg-primary-100 text-primary-700 text-xs rounded-full">JavaScript</span>
+                    <span class="px-2 py-1 bg-primary-100 text-primary-700 text-xs rounded-full">Problem Solving</span>
+                  </div>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-slate-700 mb-2">Duration & Benefits</h4>
+                  <div class="space-y-1 text-sm text-slate-600">
+                    <div class="flex items-center">
+                      <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd" />
+                      </svg>
+                      3 months duration
+                    </div>
+                    <div class="flex items-center">
+                      <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                      Certificate provided
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Why This Match Section -->
+              <div class="border-t border-slate-100 pt-4">
+                <button class="flex items-center justify-between w-full text-left" onclick="toggleMatchReason(1)">
+                  <span class="font-semibold text-primary">Why This Match? (AI की सोच)</span>
+                  <svg class="w-5 h-5 text-primary transform transition-transform" id="arrow-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+                <div class="hidden mt-3 p-4 bg-primary-50 rounded-lg" id="reason-1">
+                  <p class="text-sm text-slate-700">
+                    <strong>Perfect Match क्यों है:</strong> आपकी JavaScript और problem-solving skills इस role के लिए ideal हैं। आपका portfolio project React में है, जो exactly यहाँ चाहिए। Plus, Pune
+                    location आपकी preference के अनुसार है।
+                  </p>
+                  <div class="mt-2 text-xs text-slate-600">
+                    <span class="font-medium">Skill Match:</span> 8/10 | <span class="font-medium">Location:</span> Perfect | <span class="font-medium">Experience Level:</span> Ideal
+                  </div>
+                </div>
+              </div>
+
+              <!-- Action Buttons -->
+              <div class="flex flex-col sm:flex-row gap-3 mt-4">
+                <button class="btn-primary flex-1" onclick="applyNow('techcorp-sde')">
+                  <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                    <path
+                      d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z" />
+                  </svg>
+                  Apply Now
+                </button>
+                <button class="bg-slate-100 text-slate-700 px-4 py-2 rounded-lg font-semibold hover:bg-slate-200 transition-smooth" onclick="saveForLater('techcorp-sde')">
+                  <svg class="w-4 h-4 mr-2 inline" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M5 4a2 2 0 012-2h6a2 2 0 012 2v14l-5-2.5L5 18V4z" />
+                  </svg>
+                  Save for Later
+                </button>
+                <button class="bg-slate-100 text-slate-700 px-4 py-2 rounded-lg font-semibold hover:bg-slate-200 transition-smooth" onclick="shareWithFamily('techcorp-sde')">
+                  <svg class="w-4 h-4 mr-2 inline" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M15 8a3 3 0 10-2.977-2.63l-4.94 2.47a3 3 0 100 4.319l4.94 2.47a3 3 0 10.895-1.789l-4.94-2.47a3.027 3.027 0 000-.74l4.94-2.47C13.456 7.68 14.19 8 15 8z" />
+                  </svg>
+                  Share
+                </button>
+              </div>
+            </div>
+
+            <!-- Match Card 2 -->
+            <div class="card mb-6 border-l-4 border-l-accent-500">
+              <div class="flex flex-col lg:flex-row lg:items-center justify-between mb-4">
+                <div class="flex items-center mb-4 lg:mb-0">
+                  <img
+                    src="https://images.pexels.com/photos/267350/pexels-photo-267350.jpeg?auto=compress&cs=tinysrgb&w=80"
+                    alt="BrandWorks Logo"
+                    class="w-16 h-16 rounded-lg object-cover mr-4"
+                    onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;" />
+                  <div>
+                    <h3 class="text-xl font-semibold text-slate-800">Digital Marketing Intern</h3>
+                    <p class="text-slate-600">BrandWorks Agency</p>
+                    <div class="flex items-center mt-1">
+                      <svg class="w-4 h-4 text-slate-400 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
+                      </svg>
+                      <span class="text-sm text-slate-600">Mumbai, Maharashtra</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="flex items-center space-x-4">
+                  <div class="text-center">
+                    <div class="text-2xl font-bold text-accent-600">89%</div>
+                    <div class="text-xs text-slate-600">Match</div>
+                  </div>
+                  <div class="text-center">
+                    <div class="text-lg font-semibold text-accent-600">₹18,000</div>
+                    <div class="text-xs text-slate-600">per month</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                <div>
+                  <h4 class="font-semibold text-slate-700 mb-2">Key Requirements</h4>
+                  <div class="flex flex-wrap gap-2">
+                    <span class="px-2 py-1 bg-accent-100 text-accent-700 text-xs rounded-full">Social Media</span>
+                    <span class="px-2 py-1 bg-accent-100 text-accent-700 text-xs rounded-full">Content Writing</span>
+                    <span class="px-2 py-1 bg-accent-100 text-accent-700 text-xs rounded-full">Analytics</span>
+                  </div>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-slate-700 mb-2">Duration & Benefits</h4>
+                  <div class="space-y-1 text-sm text-slate-600">
+                    <div class="flex items-center">
+                      <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd" />
+                      </svg>
+                      6 months duration
+                    </div>
+                    <div class="flex items-center">
+                      <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                      Performance bonus
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Why This Match Section -->
+              <div class="border-t border-slate-100 pt-4">
+                <button class="flex items-center justify-between w-full text-left" onclick="toggleMatchReason(2)">
+                  <span class="font-semibold text-primary">Why This Match? (AI की सोच)</span>
+                  <svg class="w-5 h-5 text-primary transform transition-transform" id="arrow-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+                <div class="hidden mt-3 p-4 bg-primary-50 rounded-lg" id="reason-2">
+                  <p class="text-sm text-slate-700">
+                    <strong>Great Match क्यों है:</strong> आपकी creative writing skills और social media experience perfect fit है। आपने college में content creation किया है, जो यहाँ valuable है।
+                    Mumbai location भी आपकी range में है।
+                  </p>
+                  <div class="mt-2 text-xs text-slate-600">
+                    <span class="font-medium">Skill Match:</span> 7/10 | <span class="font-medium">Location:</span> Good | <span class="font-medium">Growth Potential:</span> High
+                  </div>
+                </div>
+              </div>
+
+              <!-- Action Buttons -->
+              <div class="flex flex-col sm:flex-row gap-3 mt-4">
+                <button class="btn-primary flex-1" onclick="applyNow('brandworks-marketing')">
+                  <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                    <path
+                      d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z" />
+                  </svg>
+                  Apply Now
+                </button>
+                <button class="bg-slate-100 text-slate-700 px-4 py-2 rounded-lg font-semibold hover:bg-slate-200 transition-smooth" onclick="saveForLater('brandworks-marketing')">
+                  <svg class="w-4 h-4 mr-2 inline" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M5 4a2 2 0 012-2h6a2 2 0 012 2v14l-5-2.5L5 18V4z" />
+                  </svg>
+                  Save for Later
+                </button>
+                <button class="bg-slate-100 text-slate-700 px-4 py-2 rounded-lg font-semibold hover:bg-slate-200 transition-smooth" onclick="shareWithFamily('brandworks-marketing')">
+                  <svg class="w-4 h-4 mr-2 inline" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M15 8a3 3 0 10-2.977-2.63l-4.94 2.47a3 3 0 100 4.319l4.94 2.47a3 3 0 10.895-1.789l-4.94-2.47a3.027 3.027 0 000-.74l4.94-2.47C13.456 7.68 14.19 8 15 8z" />
+                  </svg>
+                  Share
+                </button>
+              </div>
+            </div>
+
+            <!-- Match Card 3 -->
+            <div class="card mb-6 border-l-4 border-l-secondary-500">
+              <div class="flex flex-col lg:flex-row lg:items-center justify-between mb-4">
+                <div class="flex items-center mb-4 lg:mb-0">
+                  <img
+                    src="https://images.pixabay.com/photo/2016/12/30/10/03/office-1940733_960_720.jpg"
+                    alt="StartupHub Logo"
+                    class="w-16 h-16 rounded-lg object-cover mr-4"
+                    onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;" />
+                  <div>
+                    <h3 class="text-xl font-semibold text-slate-800">Business Development Intern</h3>
+                    <p class="text-slate-600">StartupHub Incubator</p>
+                    <div class="flex items-center mt-1">
+                      <svg class="w-4 h-4 text-slate-400 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
+                      </svg>
+                      <span class="text-sm text-slate-600">Bangalore, Karnataka</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="flex items-center space-x-4">
+                  <div class="text-center">
+                    <div class="text-2xl font-bold text-secondary-600">87%</div>
+                    <div class="text-xs text-slate-600">Match</div>
+                  </div>
+                  <div class="text-center">
+                    <div class="text-lg font-semibold text-accent-600">₹22,000</div>
+                    <div class="text-xs text-slate-600">per month</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                <div>
+                  <h4 class="font-semibold text-slate-700 mb-2">Key Requirements</h4>
+                  <div class="flex flex-wrap gap-2">
+                    <span class="px-2 py-1 bg-secondary-100 text-secondary-700 text-xs rounded-full">Sales</span>
+                    <span class="px-2 py-1 bg-secondary-100 text-secondary-700 text-xs rounded-full">Communication</span>
+                    <span class="px-2 py-1 bg-secondary-100 text-secondary-700 text-xs rounded-full">Strategy</span>
+                  </div>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-slate-700 mb-2">Duration & Benefits</h4>
+                  <div class="space-y-1 text-sm text-slate-600">
+                    <div class="flex items-center">
+                      <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd" />
+                      </svg>
+                      4 months duration
+                    </div>
+                    <div class="flex items-center">
+                      <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                      Startup exposure
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Action Buttons -->
+              <div class="flex flex-col sm:flex-row gap-3 mt-4">
+                <button class="btn-primary flex-1" onclick="applyNow('startuphub-bd')">
+                  <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                    <path
+                      d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z" />
+                  </svg>
+                  Apply Now
+                </button>
+                <button class="bg-slate-100 text-slate-700 px-4 py-2 rounded-lg font-semibold hover:bg-slate-200 transition-smooth" onclick="saveForLater('startuphub-bd')">
+                  <svg class="w-4 h-4 mr-2 inline" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M5 4a2 2 0 012-2h6a2 2 0 012 2v14l-5-2.5L5 18V4z" />
+                  </svg>
+                  Save for Later
+                </button>
+                <button class="bg-slate-100 text-slate-700 px-4 py-2 rounded-lg font-semibold hover:bg-slate-200 transition-smooth" onclick="shareWithFamily('startuphub-bd')">
+                  <svg class="w-4 h-4 mr-2 inline" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M15 8a3 3 0 10-2.977-2.63l-4.94 2.47a3 3 0 100 4.319l4.94 2.47a3 3 0 10.895-1.789l-4.94-2.47a3.027 3.027 0 000-.74l4.94-2.47C13.456 7.68 14.19 8 15 8z" />
+                  </svg>
+                  Share
+                </button>
+              </div>
+            </div>
+
+            <!-- Load More Button -->
+            <div class="text-center">
+              <button class="btn-secondary" onclick="loadMoreMatches()">
+                <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd" />
+                </svg>
+                Load More Matches
+              </button>
+            </div>
+          </div>
+
+          <!-- Application Tracker Section -->
+          <div class="mb-8">
+            <h2 class="text-2xl font-bold text-slate-800 mb-6">Application Tracker</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <!-- Application 1 -->
+              <div class="card border-l-4 border-l-warning-500">
+                <div class="flex items-center justify-between mb-3">
+                  <div>
+                    <h3 class="font-semibold text-slate-800">Software Development Intern</h3>
+                    <p class="text-sm text-slate-600">TechCorp Solutions</p>
+                  </div>
+                  <span class="px-3 py-1 bg-warning-100 text-warning-700 text-xs rounded-full font-medium">Under Review</span>
+                </div>
+                <div class="text-sm text-slate-600 mb-3">Applied on: Sept 8, 2025</div>
+                <div class="flex items-center text-sm text-slate-600">
+                  <svg class="w-4 h-4 mr-2 text-warning-500" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd" />
+                  </svg>
+                  Expected response: 2-3 days
+                </div>
+              </div>
+
+              <!-- Application 2 -->
+              <div class="card border-l-4 border-l-success-500">
+                <div class="flex items-center justify-between mb-3">
+                  <div>
+                    <h3 class="font-semibold text-slate-800">Digital Marketing Intern</h3>
+                    <p class="text-sm text-slate-600">BrandWorks Agency</p>
+                  </div>
+                  <span class="px-3 py-1 bg-success-100 text-success-700 text-xs rounded-full font-medium">Interview Scheduled</span>
+                </div>
+                <div class="text-sm text-slate-600 mb-3">Applied on: Sept 6, 2025</div>
+                <div class="flex items-center text-sm text-slate-600">
+                  <svg class="w-4 h-4 mr-2 text-success-500" fill="currentColor" viewBox="0 0 20 20">
+                    <path
+                      fill-rule="evenodd"
+                      d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zM4 7h12v9a1 1 0 01-1 1H5a1 1 0 01-1-1V7z"
+                      clip-rule="evenodd" />
+                  </svg>
+                  Interview: Sept 12, 2025 at 2:00 PM
+                </div>
+              </div>
+
+              <!-- Application 3 -->
+              <div class="card border-l-4 border-l-primary-500">
+                <div class="flex items-center justify-between mb-3">
+                  <div>
+                    <h3 class="font-semibold text-slate-800">Business Development Intern</h3>
+                    <p class="text-sm text-slate-600">StartupHub Incubator</p>
+                  </div>
+                  <span class="px-3 py-1 bg-primary-100 text-primary-700 text-xs rounded-full font-medium">Applied</span>
+                </div>
+                <div class="text-sm text-slate-600 mb-3">Applied on: Sept 9, 2025</div>
+                <div class="flex items-center text-sm text-slate-600">
+                  <svg class="w-4 h-4 mr-2 text-primary-500" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  Application submitted successfully
+                </div>
+              </div>
+
+              <!-- View All Applications -->
+              <div class="card bg-slate-50 border-2 border-dashed border-slate-200 flex items-center justify-center">
+                <div class="text-center">
+                  <svg class="w-8 h-8 text-slate-400 mx-auto mb-2" fill="currentColor" viewBox="0 0 20 20">
+                    <path
+                      d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z" />
+                  </svg>
+                  <p class="text-slate-600 mb-2">View all applications</p>
+                  <a href="application_manager.html" class="text-primary font-semibold hover:text-primary-700 transition-smooth"> Go to Application Manager → </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Daily Tip Section -->
+          <div class="card bg-gradient-primary text-white">
+            <div class="flex items-start space-x-4">
+              <div class="bg-white bg-opacity-20 rounded-full p-3">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" />
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-xl font-semibold mb-2">आज का Career Tip</h3>
+                <p class="text-blue-100 mb-4">
+                  Interview के लिए तैयारी करते समय, company के बारे में research जरूर करें। उनकी website देखें, recent news पढ़ें, और समझें कि आप कैसे उनकी team में value add कर सकते हैं।
+                </p>
+                <button class="bg-white bg-opacity-20 text-white px-4 py-2 rounded-lg font-semibold hover:bg-opacity-30 transition-smooth">More Tips →</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="lg:w-80">
+          <!-- Refine Preferences -->
+          <div class="card mb-6">
+            <h3 class="text-lg font-semibold text-slate-800 mb-4">Refine Preferences</h3>
+
+            <!-- Location Radius -->
+            <div class="mb-6">
+              <label class="block text-sm font-medium text-slate-700 mb-2">Location Radius</label>
+              <div class="flex items-center space-x-3">
+                <span class="text-sm text-slate-600">0 km</span>
+                <input type="range" min="0" max="500" value="100" class="flex-1" id="location-radius" />
+                <span class="text-sm text-slate-600">500 km</span>
+              </div>
+              <div class="text-center mt-2">
+                <span class="text-sm font-medium text-primary" id="radius-value">100 km</span>
+              </div>
+            </div>
+
+            <!-- Stipend Range -->
+            <div class="mb-6">
+              <label class="block text-sm font-medium text-slate-700 mb-2">Stipend Range</label>
+              <div class="flex items-center space-x-3">
+                <span class="text-sm text-slate-600">₹0</span>
+                <input type="range" min="0" max="50000" value="20000" class="flex-1" id="stipend-range" />
+                <span class="text-sm text-slate-600">₹50k</span>
+              </div>
+              <div class="text-center mt-2">
+                <span class="text-sm font-medium text-primary" id="stipend-value">₹20,000+</span>
+              </div>
+            </div>
+
+            <!-- Duration -->
+            <div class="mb-6">
+              <label class="block text-sm font-medium text-slate-700 mb-2">Duration Preference</label>
+              <div class="flex items-center space-x-3">
+                <span class="text-sm text-slate-600">1 month</span>
+                <input type="range" min="1" max="12" value="3" class="flex-1" id="duration-range" />
+                <span class="text-sm text-slate-600">12 months</span>
+              </div>
+              <div class="text-center mt-2">
+                <span class="text-sm font-medium text-primary" id="duration-value">3 months</span>
+              </div>
+            </div>
+
+            <button class="btn-primary w-full" onclick="updatePreferences()">Update Preferences</button>
+          </div>
+
+          <!-- Skill Spotlight -->
+          <div class="card mb-6">
+            <h3 class="text-lg font-semibold text-slate-800 mb-4">Your Skill Spotlight</h3>
+
+            <div class="space-y-4">
+              <!-- Skill 1 -->
+              <div class="flex items-center justify-between p-3 bg-primary-50 rounded-lg">
+                <div class="flex items-center">
+                  <div class="w-10 h-10 bg-primary-100 rounded-full flex items-center justify-center mr-3">
+                    <svg class="w-5 h-5 text-primary" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <div class="font-semibold text-slate-800">JavaScript</div>
+                    <div class="text-sm text-slate-600">Top Strength</div>
+                  </div>
+                </div>
+                <div class="text-right">
+                  <div class="text-lg font-bold text-primary">95%</div>
+                  <div class="text-xs text-slate-600">Match Rate</div>
+                </div>
+              </div>
+
+              <!-- Skill 2 -->
+              <div class="flex items-center justify-between p-3 bg-accent-50 rounded-lg">
+                <div class="flex items-center">
+                  <div class="w-10 h-10 bg-accent-100 rounded-full flex items-center justify-center mr-3">
+                    <svg class="w-5 h-5 text-accent" fill="currentColor" viewBox="0 0 20 20">
+                      <path
+                        fill-rule="evenodd"
+                        d="M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z"
+                        clip-rule="evenodd" />
+                    </svg>
+                  </div>
+                  <div>
+                    <div class="font-semibold text-slate-800">Problem Solving</div>
+                    <div class="text-sm text-slate-600">Core Skill</div>
+                  </div>
+                </div>
+                <div class="text-right">
+                  <div class="text-lg font-bold text-accent">88%</div>
+                  <div class="text-xs text-slate-600">Match Rate</div>
+                </div>
+              </div>
+
+              <!-- Skill 3 -->
+              <div class="flex items-center justify-between p-3 bg-success-50 rounded-lg">
+                <div class="flex items-center">
+                  <div class="w-10 h-10 bg-success-100 rounded-full flex items-center justify-center mr-3">
+                    <svg class="w-5 h-5 text-success" fill="currentColor" viewBox="0 0 20 20">
+                      <path
+                        fill-rule="evenodd"
+                        d="M18 13V5a2 2 0 00-2-2H4a2 2 0 00-2 2v8a2 2 0 002 2h3l3 3 3-3h3a2 2 0 002-2zM5 7a1 1 0 011-1h8a1 1 0 110 2H6a1 1 0 01-1-1zm1 3a1 1 0 100 2h3a1 1 0 100-2H6z"
+                        clip-rule="evenodd" />
+                    </svg>
+                  </div>
+                  <div>
+                    <div class="font-semibold text-slate-800">Communication</div>
+                    <div class="text-sm text-slate-600">Growing Skill</div>
+                  </div>
+                </div>
+                <div class="text-right">
+                  <div class="text-lg font-bold text-success">82%</div>
+                  <div class="text-xs text-slate-600">Match Rate</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-4 p-3 bg-slate-50 rounded-lg">
+              <p class="text-sm text-slate-600 mb-2"><strong>Suggestion:</strong> आपकी JavaScript skills के साथ React या Node.js सीखने से और भी बेहतर opportunities मिल सकती हैं।</p>
+              <button class="text-primary text-sm font-semibold hover:text-primary-700 transition-smooth">View Learning Resources →</button>
+            </div>
+          </div>
+
+          <!-- Quick Actions -->
+          <div class="card">
+            <h3 class="text-lg font-semibold text-slate-800 mb-4">Quick Actions</h3>
+
+            <div class="space-y-3">
+              <button class="w-full flex items-center justify-between p-3 bg-slate-50 rounded-lg hover:bg-slate-100 transition-smooth" onclick="getHelpApplying()">
+                <div class="flex items-center">
+                  <svg class="w-5 h-5 text-primary mr-3" fill="currentColor" viewBox="0 0 20 20">
+                    <path
+                      fill-rule="evenodd"
+                      d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z"
+                      clip-rule="evenodd" />
+                  </svg>
+                  <span class="font-medium">Get Help Applying</span>
+                </div>
+                <svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
+
+              <button class="w-full flex items-center justify-between p-3 bg-slate-50 rounded-lg hover:bg-slate-100 transition-smooth" onclick="shareWithFamily()">
+                <div class="flex items-center">
+                  <svg class="w-5 h-5 text-accent mr-3" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M15 8a3 3 0 10-2.977-2.63l-4.94 2.47a3 3 0 100 4.319l4.94 2.47a3 3 0 10.895-1.789l-4.94-2.47a3.027 3.027 0 000-.74l4.94-2.47C13.456 7.68 14.19 8 15 8z" />
+                  </svg>
+                  <span class="font-medium">Share with Family</span>
+                </div>
+                <svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
+
+              <button class="w-full flex items-center justify-between p-3 bg-slate-50 rounded-lg hover:bg-slate-100 transition-smooth" onclick="window.location.href='profile_builder.html'">
+                <div class="flex items-center">
+                  <svg class="w-5 h-5 text-success mr-3" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
+                  </svg>
+                  <span class="font-medium">Update Profile</span>
+                </div>
+                <svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sticky Bottom Navigation -->
+    <div class="fixed bottom-0 left-0 right-0 bg-white border-t border-slate-200 px-4 py-2 z-50 md:hidden">
+      <div class="flex justify-around items-center">
+        <a href="opportunity_explorer.html" class="flex flex-col items-center py-2 px-4 text-slate-600">
+          <svg class="w-6 h-6 mb-1" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
+          </svg>
+          <span class="text-xs">Search</span>
+        </a>
+        <a href="ai_recommendation_dashboard.html" class="flex flex-col items-center py-2 px-4 text-primary">
+          <svg class="w-6 h-6 mb-1" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          <span class="text-xs font-medium">AI Matches</span>
+        </a>
+        <a href="profile_builder.html" class="flex flex-col items-center py-2 px-4 text-slate-600">
+          <svg class="w-6 h-6 mb-1" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
+          </svg>
+          <span class="text-xs">Profile</span>
+        </a>
+        <a href="application_manager.html" class="flex flex-col items-center py-2 px-4 text-slate-600">
+          <svg class="w-6 h-6 mb-1" fill="currentColor" viewBox="0 0 20 20">
+            <path
+              fill-rule="evenodd"
+              d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z"
+              clip-rule="evenodd" />
+          </svg>
+          <span class="text-xs">Applications</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Floating Apply Button (Mobile) -->
+    <div class="fixed bottom-20 right-4 md:hidden z-40">
+      <button class="btn-accent rounded-full p-4 shadow-lg" onclick="quickApply()">
+        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+          <path
+            d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z" />
+        </svg>
+      </button>
+    </div>
+
+    <!-- Footer -->
+
+    <footer class="bg-slate-800 text-white py-12 mb-16 md:mb-0">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <div>
+            <div class="flex items-center">
+              <img src="AvsarX-2-removebg-preview.png" alt="AvsarX Logo" class="h-8 w-8 mr-2" />
+              <span class="text-xl font-bold text-blue-600 font-accent">AvsarX</span>
+            </div>
+            <div class="space2"></div>
+            <p class="text-slate-300 mb-4">
+              An AI-powered platform under the PM Internship Scheme that matches candidates to opportunities based on their skills, interests, aspirations, and qualifications.
+            </p>
+            <div class="flex space-x-4">
+              <a href="javascript:void(0)" class="text-slate-400 hover:text-white transition-smooth">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                  <path
+                    fill-rule="evenodd"
+                    d="M20 10c0-5.523-4.477-10-10-10S0 4.477 0 10c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V10h2.54V7.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V10h2.773l-.443 2.89h-2.33v6.988C16.343 19.128 20 14.991 20 10z"
+                    clip-rule="evenodd" />
+                </svg>
+              </a>
+              <a href="javascript:void(0)" class="text-slate-400 hover:text-white transition-smooth">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                  <path
+                    d="M6.29 18.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0020 3.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.073 4.073 0 01.8 7.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 010 16.407a11.616 11.616 0 006.29 1.84" />
+                </svg>
+              </a>
+              <a href="javascript:void(0)" class="text-slate-400 hover:text-white transition-smooth">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                  <path
+                    fill-rule="evenodd"
+                    d="M16.338 16.338H13.67V12.16c0-.995-.017-2.277-1.387-2.277-1.39 0-1.601 1.086-1.601 2.207v4.248H8.014v-8.59h2.559v1.174h.037c.356-.675 1.227-1.387 2.526-1.387 2.703 0 3.203 1.778 3.203 4.092v4.711zM5.005 6.575a1.548 1.548 0 11-.003-3.096 1.548 1.548 0 01.003 3.096zm-1.337 9.763H6.34v-8.59H3.667v8.59zM17.668 1H2.328C1.595 1 1 1.581 1 2.298v15.403C1 18.418 1.595 19 2.328 19h15.34c.734 0 1.332-.582 1.332-1.299V2.298C19 1.581 18.402 1 17.668 1z"
+                    clip-rule="evenodd" />
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          <div>
+            <h3 class="font-semibold mb-4">For Students</h3>
+            <ul class="space-y-2 text-slate-300">
+              <li>
+                <a>Find Internships</a>
+              </li>
+              <li>
+                <a>Build Profile</a>
+              </li>
+              <li>
+                <a>AI Recommendations</a>
+              </li>
+              <li>
+                <a>Track Applications</a>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="font-semibold mb-4">For Employers</h3>
+            <ul class="space-y-2 text-slate-300">
+              <li>
+                <a>Post Internships</a>
+              </li>
+              <li>
+                <a>Find Talent</a>
+              </li>
+              <li>
+                <a>Employer Dashboard</a>
+              </li>
+              <li>
+                <a>Pricing</a>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="font-semibold mb-4">Support</h3>
+            <ul class="space-y-2 text-slate-300">
+              <li>
+                <p>Help Center</p>
+              </li>
+              <li>
+                <p>Contact Us</p>
+              </li>
+              <li>
+                <p>Privacy Policy</p>
+              </li>
+              <li>
+                <p>Terms of Service</p>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="border-t border-slate-700 mt-8 pt-8 text-center text-slate-400">
+          <p>&copy; 2025 AvsarX. All Rights Reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Mobile menu toggle
+      document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+          const mobileMenu = document.getElementById('mobile-menu');
+          mobileMenu.classList.toggle('hidden');
+      });
+
+      // Toggle match reason
+      function toggleMatchReason(matchId) {
+          const reason = document.getElementById(`reason-${matchId}`);
+          const arrow = document.getElementById(`arrow-${matchId}`);
+
+          reason.classList.toggle('hidden');
+          arrow.classList.toggle('rotate-180');
+      }
+
+      // Slider updates
+      document.getElementById('location-radius').addEventListener('input', function() {
+          document.getElementById('radius-value').textContent = this.value + ' km';
+      });
+
+      document.getElementById('stipend-range').addEventListener('input', function() {
+          const value = parseInt(this.value);
+          document.getElementById('stipend-value').textContent = '₹' + (value/1000).toFixed(0) + 'k+';
+      });
+
+      document.getElementById('duration-range').addEventListener('input', function() {
+          const value = parseInt(this.value);
+          const text = value === 1 ? '1 month' : value + ' months';
+          document.getElementById('duration-value').textContent = text;
+      });
+
+      // Action functions
+      function refreshMatches() {
+          alert('Refreshing your matches... AI is finding new opportunities based on your latest activity!');
+          // Simulate refresh
+          setTimeout(() => {
+              window.location.reload();
+          }, 1000);
+      }
+
+      function applyNow(internshipId) {
+          alert(`Starting application process for ${internshipId}. You'll be guided through each step!`);
+          // Redirect to application process
+          window.location.href = 'application_manager.html';
+      }
+
+      function saveForLater(internshipId) {
+          alert(`Saved ${internshipId} to your favorites! You can find it in your saved opportunities.`);
+      }
+
+      function shareWithFamily(internshipId) {
+          if (navigator.share) {
+              navigator.share({
+                  title: 'Check out this internship opportunity!',
+                  text: 'I found this great internship match on InternMatch AI',
+                  url: window.location.href
+              });
+          } else {
+              alert('Share link copied! You can send this to your family via WhatsApp or SMS.');
+          }
+      }
+
+      function updatePreferences() {
+          const radius = document.getElementById('location-radius').value;
+          const stipend = document.getElementById('stipend-range').value;
+          const duration = document.getElementById('duration-range').value;
+
+          alert(`Preferences updated! Location: ${radius}km, Stipend: ₹${stipend}+, Duration: ${duration} months. Finding new matches...`);
+
+          // Simulate preference update
+          setTimeout(() => {
+              refreshMatches();
+          }, 1000);
+      }
+
+      function loadMoreMatches() {
+          alert('Loading more matches... AI is analyzing additional opportunities for you!');
+      }
+
+      function getHelpApplying() {
+          alert('Help is available! You can:\n• Call our support: 1800-123-4567\n• WhatsApp: +91-9876543210\n• Video call assistance available in Hindi and English');
+      }
+
+      function quickApply() {
+          alert('Quick Apply activated! Choose an internship to apply with one tap.');
+      }
+
+      // Auto-refresh matches every 5 minutes
+      setInterval(() => {
+          console.log('Auto-refreshing matches in background...');
+      }, 300000);
+
+      // Simulate real-time updates
+      function simulateRealTimeUpdates() {
+          // Update match counts occasionally
+          setTimeout(() => {
+              const matchCount = document.querySelector('.bg-primary-50 .text-2xl');
+              if (matchCount) {
+                  const currentCount = parseInt(matchCount.textContent);
+                  matchCount.textContent = currentCount + 1;
+              }
+          }, 30000);
+      }
+
+      // Initialize real-time updates
+      simulateRealTimeUpdates();
+
+      // Offline sync notification
+      window.addEventListener('online', function() {
+          alert('Back online! Syncing your latest activity...');
+      });
+
+      window.addEventListener('offline', function() {
+          alert('You\'re offline. Don\'t worry - your saved opportunities are still available!');
+      });
+    </script>
+    <script id="dhws-dataInjector" src="../public/dhws-data-injector.js"></script>
+  </body>
+</html>

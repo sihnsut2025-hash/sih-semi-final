@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Company Profiles - AvsarX</title>
+    <link rel="stylesheet" href="../css/main.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <script type="module" src="https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Finternmatc6600back.builtwithrocket.new&_be=https%3A%2F%2Fapplication.rocket.new&_v=0.1.8"></script>
+  </head>
+  <body class="bg-background min-h-screen">
+    <!-- Header Navigation -->
+    <header class="bg-white shadow-sm border-b border-slate-100 sticky top-0 z-40">
+      <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+          <!-- Logo -->
+          <div class="flex items-center">
+            <img src="AvsarX-2-removebg-preview.png" alt="AvsarX Logo" class="h-8 w-8 mr-2" />
+            <span class="text-xl font-bold text-blue-600 font-accent">AvsarX</span>
+          </div>
+
+          <!-- Desktop Navigation -->
+          <div class="hidden md:flex items-center space-x-8">
+            <a href="homepage.html" class="text-slate-600 hover:text-primary transition-smooth">Home</a>
+            <a href="opportunity_explorer.html" class="text-slate-600 hover:text-primary transition-smooth">Opportunities</a>
+            <a href="company_profiles.html" class="text-primary font-semibold">Companies</a>
+            <a href="profile_builder.html" class="btn-primary">Build Profile</a>
+          </div>
+
+          <!-- Mobile Menu Button -->
+          <button class="md:hidden p-2" id="mobile-menu-btn">
+            <svg class="h-6 w-6 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+        </div>
+      </nav>
+
+      <!-- Mobile Menu -->
+      <div class="md:hidden hidden bg-white border-t border-slate-100" id="mobile-menu">
+        <div class="px-4 py-2 space-y-2">
+          <a href="homepage.html" class="block py-2 text-slate-600">Home</a>
+          <a href="opportunity_explorer.html" class="block py-2 text-slate-600">Opportunities</a>
+          <a href="company_profiles.html" class="block py-2 text-primary font-semibold">Companies</a>
+          <a href="profile_builder.html" class="block py-2 text-primary font-semibold">Build Profile</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="bg-gradient-primary py-12 lg:py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center">
+          <h1 class="text-3xl lg:text-5xl font-bold text-white mb-4 font-accent">Meet Your Future Employers</h1>
+          <p class="text-xl text-blue-100 mb-8 max-w-3xl mx-auto">Discover companies that value your potential and provide supportive environments for growth</p>
+
+          <!-- Search and Filter Bar -->
+          <div class="max-w-4xl mx-auto">
+            <div class="bg-white rounded-2xl p-6 shadow-modal">
+              <div class="flex flex-col lg:flex-row gap-4">
+                <div class="flex-1">
+                  <div class="relative">
+                    <svg class="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                    <input type="text" placeholder="Search companies by name or industry..." class="input-field pl-10" id="company-search" />
+                  </div>
+                </div>
+                <div class="flex flex-col sm:flex-row gap-4">
+                  <select class="input-field" id="industry-filter">
+                    <option value>All Industries</option>
+                    <option value="technology">Technology</option>
+                    <option value="finance">Finance</option>
+                    <option value="marketing">Marketing</option>
+                    <option value="design">Design</option>
+                    <option value="consulting">Consulting</option>
+                  </select>
+                  <select class="input-field" id="location-filter">
+                    <option value>All Locations</option>
+                    <option value="mumbai">Mumbai</option>
+                    <option value="bangalore">Bangalore</option>
+                    <option value="delhi">Delhi</option>
+                    <option value="pune">Pune</option>
+                    <option value="hyderabad">Hyderabad</option>
+                  </select>
+                  <button class="btn-accent px-6 py-3 whitespace-nowrap" onclick="filterCompanies()">
+                    <svg class="inline-block w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                      <path
+                        fill-rule="evenodd"
+                        d="M3 3a1 1 0 011-1h12a1 1 0 011 1v3a1 1 0 01-.293.707L12 11.414V15a1 1 0 01-.293.707l-2 2A1 1 0 018 17v-5.586L3.293 6.707A1 1 0 013 6V3z"
+                        clip-rule="evenodd" />
+                    </svg>
+                    Filter
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Companies -->
+    <section class="py-16 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold text-slate-800 mb-4">Featured Companies</h2>
+          <p class="text-lg text-slate-600">Top employers actively hiring interns</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="companies-grid">
+          <!-- Company Card 1 - TechCorp Solutions -->
+          <div class="card hover:shadow-xl transition-all cursor-pointer company-card" data-industry="technology" data-location="pune" onclick="openCompanyModal('techcorp')">
+            <div class="relative mb-6">
+              <img
+                src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?q=80&w=600&auto=format&fit=crop"
+                alt="TechCorp Office"
+                class="w-full h-48 object-cover rounded-lg"
+                onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;" />
+              <div class="absolute top-4 right-4 bg-success-500 text-white px-3 py-1 rounded-full text-sm font-semibold">Hiring Now</div>
+            </div>
+
+            <div class="flex items-center mb-4">
+              <img
+                src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?q=80&w=100&auto=format&fit=crop"
+                alt="TechCorp Logo"
+                class="w-16 h-16 rounded-lg object-cover mr-4"
+                onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;" />
+              <div>
+                <h3 class="text-xl font-bold text-slate-800">TechCorp Solutions</h3>
+                <p class="text-slate-600">Software Development</p>
+              </div>
+            </div>
+
+            <p class="text-slate-600 mb-4">A friendly tech company that believes in nurturing fresh talent. We provide mentorship, flexible hours, and real project experience.</p>
+
+            <div class="space-y-3 mb-6">
+              <div class="flex items-center text-sm text-slate-600">
+                <svg class="w-4 h-4 mr-2 text-primary" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
+                </svg>
+                Pune, Maharashtra
+              </div>
+              <div class="flex items-center text-sm text-slate-600">
+                <svg class="w-4 h-4 mr-2 text-primary" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
+                </svg>
+                250+ Employees
+              </div>
+              <div class="flex items-center text-sm text-slate-600">
+                <svg class="w-4 h-4 mr-2 text-success-500" fill="currentColor" viewBox="0 0 20 20">
+                  <path
+                    fill-rule="evenodd"
+                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                    clip-rule="evenodd" />
+                </svg>
+                95% Intern Satisfaction
+              </div>
+            </div>
+
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="px-3 py-1 bg-primary-100 text-primary-700 text-sm rounded-full">Mentorship</span>
+              <span class="px-3 py-1 bg-success-100 text-success-700 text-sm rounded-full">Remote OK</span>
+              <span class="px-3 py-1 bg-accent-100 text-accent-700 text-sm rounded-full">Growth Focus</span>
+            </div>
+
+            <div class="flex justify-between items-center">
+              <span class="text-sm font-semibold text-accent-600">5 Open Positions</span>
+              <div class="flex items-center text-sm text-slate-500">
+                <svg class="w-4 h-4 mr-1 text-accent-500" fill="currentColor" viewBox="0 0 20 20">
+                  <path
+                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                </svg>
+                4.8/5 Rating
+              </div>
+            </div>
+          </div>
+
+          <!-- Company Card 2 - BrandWorks Agency -->
+          <div class="card hover:shadow-xl transition-all cursor-pointer company-card" data-industry="marketing" data-location="mumbai" onclick="openCompanyModal('brandworks')">
+            <div class="relative mb-6">
+              <img
+                src="https://images.pexels.com/photos/267350/pexels-photo-267350.jpeg?auto=compress&cs=tinysrgb&w=600"
+                alt="BrandWorks Office"
+                class="w-full h-48 object-cover rounded-lg"
+                onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;" />
+              <div class="absolute top-4 right-4 bg-accent-500 text-white px-3 py-1 rounded-full text-sm font-semibold">Featured</div>
+            </div>
+
+            <div class="flex items-center mb-4">
+              <img
+                src="https://images.pexels.com/photos/267350/pexels-photo-267350.jpeg?auto=compress&cs=tinysrgb&w=100"
+                alt="BrandWorks Logo"
+                class="w-16 h-16 rounded-lg object-cover mr-4"
+                onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;" />
+              <div>
+                <h3 class="text-xl font-bold text-slate-800">BrandWorks Agency</h3>
+                <p class="text-slate-600">Digital Marketing</p>
+              </div>
+            </div>
+
+            <p class="text-slate-600 mb-4">Creative marketing agency that values fresh perspectives. We offer hands-on experience with real client projects and creative freedom.</p>
+
+            <div class="space-y-3 mb-6">
+              <div class="flex items-center text-sm text-slate-600">
+                <svg class="w-4 h-4 mr-2 text-primary" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
+                </svg>
+                Mumbai, Maharashtra
+              </div>
+              <div class="flex items-center text-sm text-slate-600">
+                <svg class="w-4 h-4 mr-2 text-primary" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
+                </svg>
+                80+ Employees
+              </div>
+              <div class="flex items-center text-sm text-slate-600">
+                <svg class="w-4 h-4 mr-2 text-success-500" fill="currentColor" viewBox="0 0 20 20">
+                  <path
+                    fill-rule="evenodd"
+                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                    clip-rule="evenodd" />
+                </svg>
+                92% Intern Satisfaction
+              </div>
+            </div>
+
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="px-3 py-1 bg-accent-100 text-accent-700 text-sm rounded-full">Creative</span>
+              <span class="px-3 py-1 bg-primary-100 text-primary-700 text-sm rounded-full">Client Work</span>
+              <span class="px-3 py-1 bg-secondary-100 text-secondary-700 text-sm rounded-full">Flexible</span>
+            </div>
+
+            <div class="flex justify-between items-center">
+              <span class="text-sm font-semibold text-accent-600">3 Open Positions</span>
+              <div class="flex items-center text-sm text-slate-500">
+                <svg class="w-4 h-4 mr-1 text-accent-500" fill="currentColor" viewBox="0 0 20 20">
+                  <path
+                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                </svg>
+                4.6/5 Rating
+              </div>
+            </div>
+          </div>
+
+          <!-- Company Card 3 - DataTech Solutions -->
+          <div class="card hover:shadow-xl transition-all cursor-pointer company-card" data-industry="technology" data-location="bangalore" onclick="openCompanyModal('datatech')">
+            <div class="relative mb-6">
+              <img
+                src="https://images.pixabay.com/photo/2016/12/30/10/03/office-1940733_960_720.jpg"
+                alt="DataTech Office"
+                class="w-full h-48 object-cover rounded-lg"
+                onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;" />
+              <div class="absolute top-4 right-4 bg-primary-500 text-white px-3 py-1 rounded-full text-sm font-semibold">Top Rated</div>
+            </div>
+
+            <div class="flex items-center mb-4">
+              <img
+                src="https://images.pixabay.com/photo/2016/12/30/10/03/office-1940733_960_720.jpg"
+                alt="DataTech Logo"
+                class="w-16 h-16 rounded-lg object-cover mr-4"
+                onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;" />
+              <div>
+                <h3 class="text-xl font-bold text-slate-800">DataTech Solutions</h3>
+                <p class="text-slate-600">Data Analytics</p>
+              </div>
+            </div>
+
+            <p class="text-slate-600 mb-4">Leading data analytics company focused on training the next generation of data scientists. Comprehensive learning programs included.</p>
+
+            <div class="space-y-3 mb-6">
+              <div class="flex items-center text-sm text-slate-600">
+                <svg class="w-4 h-4 mr-2 text-primary" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
+                </svg>
+                Bangalore, Karnataka
+              </div>
+              <div class="flex items-center text-sm text-slate-600">
+                <svg class="w-4 h-4 mr-2 text-primary" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
+                </svg>
+                500+ Employees
+              </div>
+              <div class="flex items-center text-sm text-slate-600">
+                <svg class="w-4 h-4 mr-2 text-success-500" fill="currentColor" viewBox="0 0 20 20">
+                  <path
+                    fill-rule="evenodd"
+                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                    clip-rule="evenodd" />
+                </svg>
+                98% Intern Satisfaction
+              </div>
+            </div>
+
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="px-3 py-1 bg-primary-100 text-primary-700 text-sm rounded-full">Learning</span>
+              <span class="px-3 py-1 bg-success-100 text-success-700 text-sm rounded-full">High Stipend</span>
+              <span class="px-3 py-1 bg-accent-100 text-accent-700 text-sm rounded-full">Certification</span>
+            </div>
+
+            <div class="flex justify-between items-center">
+              <span class="text-sm font-semibold text-accent-600">8 Open Positions</span>
+              <div class="flex items-center text-sm text-slate-500">
+                <svg class="w-4 h-4 mr-1 text-accent-500" fill="currentColor" viewBox="0 0 20 20">
+                  <path
+                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                </svg>
+                4.9/5 Rating
+              </div>
+            </div>
+          </div>
+
+          <!-- Company Card 4 - CreativeStudio -->
+          <div class="card hover:shadow-xl transition-all cursor-pointer company-card" data-industry="design" data-location="hyderabad" onclick="openCompanyModal('creativestudio')">
+            <div class="relative mb-6">
+              <img
+                src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=600"
+                alt="CreativeStudio Office"
+                class="w-full h-48 object-cover rounded-lg"
+                onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;" />
+              <div class="absolute top-4 right-4 bg-secondary-500 text-white px-3 py-1 rounded-full text-sm font-semibold">New</div>
+            </div>
+
+            <div class="flex items-center mb-4">
+              <img
+                src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=100"
+                alt="CreativeStudio Logo"
+                class="w-16 h-16 rounded-lg object-cover mr-4"
+                onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;" />
+              <div>
+                <h3 class="text-xl font-bold text-slate-800">CreativeStudio</h3>
+                <p class="text-slate-600">UI/UX Design</p>
+              </div>
+            </div>
+
+            <p class="text-slate-600 mb-4">Award-winning design studio that nurtures creative talent. Work on exciting projects for top brands while learning from industry experts.</p>
+
+            <div class="space-y-3 mb-6">
+              <div class="flex items-center text-sm text-slate-600">
+                <svg class="w-4 h-4 mr-2 text-primary" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
+                </svg>
+                Hyderabad, Telangana
+              </div>
+              <div class="flex items-center text-sm text-slate-600">
+                <svg class="w-4 h-4 mr-2 text-primary" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
+                </svg>
+                120+ Employees
+              </div>
+              <div class="flex items-center text-sm text-slate-600">
+                <svg class="w-4 h-4 mr-2 text-success-500" fill="currentColor" viewBox="0 0 20 20">
+                  <path
+                    fill-rule="evenodd"
+                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                    clip-rule="evenodd" />
+                </svg>
+                94% Intern Satisfaction
+              </div>
+            </div>
+
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="px-3 py-1 bg-secondary-100 text-secondary-700 text-sm rounded-full">Portfolio</span>
+              <span class="px-3 py-1 bg-accent-100 text-accent-700 text-sm rounded-full">Awards</span>
+              <span class="px-3 py-1 bg-primary-100 text-primary-700 text-sm rounded-full">Mentorship</span>
+            </div>
+
+            <div class="flex justify-between items-center">
+              <span class="text-sm font-semibold text-accent-600">4 Open Positions</span>
+              <div class="flex items-center text-sm text-slate-500">
+                <svg class="w-4 h-4 mr-1 text-accent-500" fill="currentColor" viewBox="0 0 20 20">
+                  <path
+                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                </svg>
+                4.7/5 Rating
+              </div>
+            </div>
+          </div>
+
+          <!-- Company Card 5 - PayNext Solutions -->
+          <div class="card hover:shadow-xl transition-all cursor-pointer company-card" data-industry="finance" data-location="mumbai" onclick="openCompanyModal('paynext')">
+            <div class="relative mb-6">
+              <img
+                src="https://images.pixabay.com/photo/2016/11/19/14/00/code-1839406_960_720.jpg"
+                alt="PayNext Office"
+                class="w-full h-48 object-cover rounded-lg"
+                onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;" />
+              <div class="absolute top-4 right-4 bg-error-500 text-white px-3 py-1 rounded-full text-sm font-semibold">Hot</div>
+            </div>
+
+            <div class="flex items-center mb-4">
+              <img
+                src="https://images.pixabay.com/photo/2016/11/19/14/00/code-1839406_960_720.jpg"
+                alt="PayNext Logo"
+                class="w-16 h-16 rounded-lg object-cover mr-4"
+                onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;" />
+              <div>
+                <h3 class="text-xl font-bold text-slate-800">PayNext Solutions</h3>
+                <p class="text-slate-600">FinTech</p>
+              </div>
+            </div>
+
+            <p class="text-slate-600 mb-4">Fast-growing fintech startup revolutionizing digital payments. Join our mission to make financial services accessible to all Indians.</p>
+
+            <div class="space-y-3 mb-6">
+              <div class="flex items-center text-sm text-slate-600">
+                <svg class="w-4 h-4 mr-2 text-primary" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
+                </svg>
+                Mumbai, Maharashtra
+              </div>
+              <div class="flex items-center text-sm text-slate-600">
+                <svg class="w-4 h-4 mr-2 text-primary" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
+                </svg>
+                300+ Employees
+              </div>
+              <div class="flex items-center text-sm text-slate-600">
+                <svg class="w-4 h-4 mr-2 text-success-500" fill="currentColor" viewBox="0 0 20 20">
+                  <path
+                    fill-rule="evenodd"
+                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                    clip-rule="evenodd" />
+                </svg>
+                96% Intern Satisfaction
+              </div>
+            </div>
+
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="px-3 py-1 bg-accent-100 text-accent-700 text-sm rounded-full">Startup</span>
+              <span class="px-3 py-1 bg-success-100 text-success-700 text-sm rounded-full">High Growth</span>
+              <span class="px-3 py-1 bg-error-100 text-error-700 text-sm rounded-full">Equity</span>
+            </div>
+
+            <div class="flex justify-between items-center">
+              <span class="text-sm font-semibold text-accent-600">6 Open Positions</span>
+              <div class="flex items-center text-sm text-slate-500">
+                <svg class="w-4 h-4 mr-1 text-accent-500" fill="currentColor" viewBox="0 0 20 20">
+                  <path
+                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                </svg>
+                4.8/5 Rating
+              </div>
+            </div>
+          </div>
+
+          <!-- Company Card 6 - StartupHub Incubator -->
+          <div class="card hover:shadow-xl transition-all cursor-pointer company-card" data-industry="consulting" data-location="delhi" onclick="openCompanyModal('startuphub')">
+            <div class="relative mb-6">
+              <img
+                src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?q=80&w=600&auto=format&fit=crop"
+                alt="StartupHub Office"
+                class="w-full h-48 object-cover rounded-lg"
+                onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;" />
+              <div class="absolute top-4 right-4 bg-warning-500 text-white px-3 py-1 rounded-full text-sm font-semibold">Trending</div>
+            </div>
+
+            <div class="flex items-center mb-4">
+              <img
+                src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?q=80&w=100&auto=format&fit=crop"
+                alt="StartupHub Logo"
+                class="w-16 h-16 rounded-lg object-cover mr-4"
+                onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;" />
+              <div>
+                <h3 class="text-xl font-bold text-slate-800">StartupHub Incubator</h3>
+                <p class="text-slate-600">Business Consulting</p>
+              </div>
+            </div>
+
+            <p class="text-slate-600 mb-4">Premier startup incubator helping entrepreneurs build successful businesses. Gain exposure to multiple startups and business models.</p>
+
+            <div class="space-y-3 mb-6">
+              <div class="flex items-center text-sm text-slate-600">
+                <svg class="w-4 h-4 mr-2 text-primary" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
+                </svg>
+                Delhi, NCR
+              </div>
+              <div class="flex items-center text-sm text-slate-600">
+                <svg class="w-4 h-4 mr-2 text-primary" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
+                </svg>
+                150+ Employees
+              </div>
+              <div class="flex items-center text-sm text-slate-600">
+                <svg class="w-4 h-4 mr-2 text-success-500" fill="currentColor" viewBox="0 0 20 20">
+                  <path
+                    fill-rule="evenodd"
+                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                    clip-rule="evenodd" />
+                </svg>
+                91% Intern Satisfaction
+              </div>
+            </div>
+
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="px-3 py-1 bg-warning-100 text-warning-700 text-sm rounded-full">Networking</span>
+              <span class="px-3 py-1 bg-primary-100 text-primary-700 text-sm rounded-full">Strategy</span>
+              <span class="px-3 py-1 bg-secondary-100 text-secondary-700 text-sm rounded-full">Innovation</span>
+            </div>
+
+            <div class="flex justify-between items-center">
+              <span class="text-sm font-semibold text-accent-600">7 Open Positions</span>
+              <div class="flex items-center text-sm text-slate-500">
+                <svg class="w-4 h-4 mr-1 text-accent-500" fill="currentColor" viewBox="0 0 20 20">
+                  <path
+                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                </svg>
+                4.5/5 Rating
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Load More Button -->
+        <div class="text-center mt-12">
+          <button class="btn-primary" onclick="loadMoreCompanies()">Load More Companies</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Company Modal -->
+    <div class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden" id="company-modal">
+      <div class="flex items-center justify-center min-h-screen p-4">
+        <div class="bg-white rounded-2xl max-w-4xl w-full max-h-screen overflow-y-auto shadow-modal">
+          <div class="sticky top-0 bg-white border-b border-slate-100 p-6 flex justify-between items-center">
+            <h2 class="text-2xl font-bold text-slate-800" id="modal-company-name">Company Details</h2>
+            <button class="text-slate-400 hover:text-slate-600" onclick="closeCompanyModal()">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
+
+          <div class="p-6" id="modal-content">
+            <!-- Content will be dynamically loaded -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sticky Bottom Navigation -->
+    <div class="fixed bottom-0 left-0 right-0 bg-white border-t border-slate-200 px-4 py-2 z-50 md:hidden">
+      <div class="flex justify-around items-center">
+        <a href="opportunity_explorer.html" class="flex flex-col items-center py-2 px-4 text-slate-600">
+          <svg class="w-6 h-6 mb-1" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
+          </svg>
+          <span class="text-xs">Find Internships</span>
+        </a>
+        <a href="profile_builder.html" class="flex flex-col items-center py-2 px-4 text-slate-600">
+          <svg class="w-6 h-6 mb-1" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
+          </svg>
+          <span class="text-xs">My Profile</span>
+        </a>
+        <a href="company_profiles.html" class="flex flex-col items-center py-2 px-4 text-primary">
+          <svg class="w-6 h-6 mb-1" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M4 4a2 2 0 00-2 2v8a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2H4zm2 6a2 2 0 104 0 2 2 0 00-4 0zm8 0a2 2 0 104 0 2 2 0 00-4 0z" clip-rule="evenodd" />
+          </svg>
+          <span class="text-xs font-medium">Companies</span>
+        </a>
+        <a href="application_manager.html" class="flex flex-col items-center py-2 px-4 text-slate-600">
+          <svg class="w-6 h-6 mb-1" fill="currentColor" viewBox="0 0 20 20">
+            <path
+              fill-rule="evenodd"
+              d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z"
+              clip-rule="evenodd" />
+          </svg>
+          <span class="text-xs">Applications</span>
+        </a>
+      </div>
+    </div>
+
+    <footer class="bg-slate-800 text-white py-12 mb-16 md:mb-0">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <div>
+            <div class="flex items-center">
+              <img src="AvsarX-2-removebg-preview.png" alt="AvsarX Logo" class="h-8 w-8 mr-2" />
+              <span class="text-xl font-bold text-blue-600 font-accent">AvsarX</span>
+            </div>
+            <div class="space2"></div>
+            <p class="text-slate-300 mb-4">
+              An AI-powered platform under the PM Internship Scheme that matches candidates to opportunities based on their skills, interests, aspirations, and qualifications.
+            </p>
+            <div class="flex space-x-4">
+              <a href="javascript:void(0)" class="text-slate-400 hover:text-white transition-smooth">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                  <path
+                    fill-rule="evenodd"
+                    d="M20 10c0-5.523-4.477-10-10-10S0 4.477 0 10c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V10h2.54V7.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V10h2.773l-.443 2.89h-2.33v6.988C16.343 19.128 20 14.991 20 10z"
+                    clip-rule="evenodd" />
+                </svg>
+              </a>
+              <a href="javascript:void(0)" class="text-slate-400 hover:text-white transition-smooth">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                  <path
+                    d="M6.29 18.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0020 3.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.073 4.073 0 01.8 7.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 010 16.407a11.616 11.616 0 006.29 1.84" />
+                </svg>
+              </a>
+              <a href="javascript:void(0)" class="text-slate-400 hover:text-white transition-smooth">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                  <path
+                    fill-rule="evenodd"
+                    d="M16.338 16.338H13.67V12.16c0-.995-.017-2.277-1.387-2.277-1.39 0-1.601 1.086-1.601 2.207v4.248H8.014v-8.59h2.559v1.174h.037c.356-.675 1.227-1.387 2.526-1.387 2.703 0 3.203 1.778 3.203 4.092v4.711zM5.005 6.575a1.548 1.548 0 11-.003-3.096 1.548 1.548 0 01.003 3.096zm-1.337 9.763H6.34v-8.59H3.667v8.59zM17.668 1H2.328C1.595 1 1 1.581 1 2.298v15.403C1 18.418 1.595 19 2.328 19h15.34c.734 0 1.332-.582 1.332-1.299V2.298C19 1.581 18.402 1 17.668 1z"
+                    clip-rule="evenodd" />
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          <div>
+            <h3 class="font-semibold mb-4">For Students</h3>
+            <ul class="space-y-2 text-slate-300">
+              <li>
+                <a>Find Internships</a>
+              </li>
+              <li>
+                <a>Build Profile</a>
+              </li>
+              <li>
+                <a>AI Recommendations</a>
+              </li>
+              <li>
+                <a>Track Applications</a>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="font-semibold mb-4">For Employers</h3>
+            <ul class="space-y-2 text-slate-300">
+              <li>
+                <a>Post Internships</a>
+              </li>
+              <li>
+                <a>Find Talent</a>
+              </li>
+              <li>
+                <a>Employer Dashboard</a>
+              </li>
+              <li>
+                <a>Pricing</a>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="font-semibold mb-4">Support</h3>
+            <ul class="space-y-2 text-slate-300">
+              <li>
+                <p>Help Center</p>
+              </li>
+              <li>
+                <p>Contact Us</p>
+              </li>
+              <li>
+                <p>Privacy Policy</p>
+              </li>
+              <li>
+                <p>Terms of Service</p>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="border-t border-slate-700 mt-8 pt-8 text-center text-slate-400">
+          <p>&copy; 2025 AvsarX. All Rights Reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Mobile menu toggle
+      document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+          const mobileMenu = document.getElementById('mobile-menu');
+          mobileMenu.classList.toggle('hidden');
+      });
+
+      // Filter companies function
+      function filterCompanies() {
+          const searchTerm = document.getElementById('company-search').value.toLowerCase();
+          const industryFilter = document.getElementById('industry-filter').value;
+          const locationFilter = document.getElementById('location-filter').value;
+          const companyCards = document.querySelectorAll('.company-card');
+
+          companyCards.forEach(card => {
+              const companyName = card.querySelector('h3').textContent.toLowerCase();
+              const industry = card.dataset.industry;
+              const location = card.dataset.location;
+
+              const matchesSearch = companyName.includes(searchTerm);
+              const matchesIndustry = !industryFilter || industry === industryFilter;
+              const matchesLocation = !locationFilter || location === locationFilter;
+
+              if (matchesSearch && matchesIndustry && matchesLocation) {
+                  card.style.display = 'block';
+              } else {
+                  card.style.display = 'none';
+              }
+          });
+      }
+
+      // Real-time search
+      document.getElementById('company-search').addEventListener('input', filterCompanies);
+      document.getElementById('industry-filter').addEventListener('change', filterCompanies);
+      document.getElementById('location-filter').addEventListener('change', filterCompanies);
+
+      // Company modal functions
+      function openCompanyModal(companyId) {
+          const modal = document.getElementById('company-modal');
+          const modalContent = document.getElementById('modal-content');
+          const modalTitle = document.getElementById('modal-company-name');
+
+          // Company data
+          const companyData = {
+              techcorp: {
+                  name: 'TechCorp Solutions',
+                  industry: 'Software Development',
+                  location: 'Pune, Maharashtra',
+                  employees: '250+',
+                  founded: '2018',
+                  description: 'TechCorp Solutions is a friendly technology company that believes in nurturing fresh talent. We provide comprehensive mentorship programs, flexible working hours, and hands-on experience with real projects that make a difference.',
+                  culture: 'Our culture is built on collaboration, continuous learning, and innovation. We believe that the best ideas come from diverse perspectives and encourage all team members to share their thoughts and contribute to our success.',
+                  benefits: [
+                      'Comprehensive mentorship program',
+                      'Flexible working hours (9 AM - 6 PM core hours)',
+                      'Work from home options available',
+                      'Learning and development budget',
+                      'Health insurance coverage',
+                      'Team outings and events'
+                  ],
+                  familyFriendly: [
+                      'Safe and secure office environment',
+                      'Female-friendly policies and facilities',
+                      'Flexible timing for family commitments',
+                      'Transportation assistance',
+                      'Emergency contact support'
+                  ],
+                  whatToExpect: {
+                      dressCode: 'Smart casual - comfortable clothing that allows you to focus on your work',
+                      typicalDay: 'Morning standup → Project work → Lunch break → Afternoon collaboration → Learning time',
+                      mentorship: 'Each intern is paired with a senior developer for guidance and support',
+                      growth: 'High-performing interns are offered full-time positions with competitive packages'
+                  },
+                  openings: [
+                      { title: 'Software Development Intern', stipend: '₹25,000/month', duration: '3 months' },
+                      { title: 'Frontend Developer Intern', stipend: '₹22,000/month', duration: '4 months' },
+                      { title: 'Backend Developer Intern', stipend: '₹24,000/month', duration: '3 months' }
+                  ],
+                  colleagues: [
+                      { name: 'Rahul Sharma', role: 'Senior Developer', message: 'Always excited to mentor new talent!' },
+                      { name: 'Priya Patel', role: 'Team Lead', message: 'We create a supportive environment for learning.' }
+                  ],
+                  reviews: [
+                      { name: 'Amit Kumar', rating: 5, review: 'Amazing learning experience. The mentorship program is excellent!' },
+                      { name: 'Sneha Singh', rating: 5, review: 'Great work culture and very supportive team members.' }
+                  ]
+              },
+              brandworks: {
+                  name: 'BrandWorks Agency',
+                  industry: 'Digital Marketing',
+                  location: 'Mumbai, Maharashtra',
+                  employees: '80+',
+                  founded: '2019',
+                  description: 'BrandWorks Agency is a creative marketing agency that values fresh perspectives and innovative ideas. We work with exciting brands and provide interns with hands-on experience in real client projects.',
+                  culture: 'We foster creativity, encourage bold ideas, and believe in the power of collaboration. Our open office environment promotes free-flowing communication and creative brainstorming sessions.',
+                  benefits: [
+                      'Work on real client projects',
+                      'Creative freedom and idea ownership',
+                      'Skill development workshops',
+                      'Industry networking opportunities',
+                      'Performance-based incentives',
+                      'Modern office with creative spaces'
+                  ],
+                  familyFriendly: [
+                      'Women-friendly workplace policies',
+                      'Flexible working arrangements',
+                      'Safe commute options',
+                      'Family emergency leave policies',
+                      'Supportive team environment'
+                  ],
+                  whatToExpected: {
+                      dressCode: 'Creative casual - express your personality through your style',
+                      typicalDay: 'Creative briefing → Campaign development → Client presentations → Skill workshops',
+                      mentorship: 'Creative directors provide guidance on campaign development and industry insights',
+                      growth: 'Opportunity to lead campaigns and potential full-time creative roles'
+                  },
+                  openings: [
+                      { title: 'Digital Marketing Intern', stipend: '₹18,000/month', duration: '6 months' },
+                      { title: 'Content Creation Intern', stipend: '₹16,000/month', duration: '4 months' },
+                      { title: 'Social Media Intern', stipend: '₹15,000/month', duration: '3 months' }
+                  ],
+                  colleagues: [
+                      { name: 'Arjun Mehta', role: 'Creative Director', message: 'Love working with fresh creative minds!' },
+                      { name: 'Kavya Reddy', role: 'Account Manager', message: 'We believe in nurturing creative talent.' }
+                  ],
+                  reviews: [
+                      { name: 'Riya Gupta', rating: 5, review: 'Incredible creative environment. Learned so much about marketing!' },
+                      { name: 'Vikash Jain', rating: 4, review: 'Great exposure to real client work and creative processes.' }
+                  ]
+              }
+          };
+
+          const company = companyData[companyId];
+          if (!company) return;
+
+          modalTitle.textContent = company.name;
+
+          modalContent.innerHTML = `
+              <!-- Company Header -->
+              <div class="mb-8">
+                  <div class="flex flex-col lg:flex-row gap-6">
+                      <div class="flex-1">
+                          <div class="flex items-center mb-4">
+                              <div class="w-16 h-16 bg-primary-100 rounded-lg flex items-center justify-center mr-4">
+                                  <svg class="w-8 h-8 text-primary" fill="currentColor" viewBox="0 0 20 20">
+                                      <path fill-rule="evenodd" d="M4 4a2 2 0 00-2 2v8a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2H4zm2 6a2 2 0 104 0 2 2 0 00-4 0zm8 0a2 2 0 104 0 2 2 0 00-4 0z" clip-rule="evenodd"/>
+                                  </svg>
+                              </div>
+                              <div>
+                                  <h3 class="text-2xl font-bold text-slate-800">${company.name}</h3>
+                                  <p class="text-lg text-slate-600">${company.industry}</p>
+                              </div>
+                          </div>
+                          <p class="text-slate-600 mb-4">${company.description}</p>
+
+                          <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+                              <div class="text-center p-3 bg-slate-50 rounded-lg">
+                                  <div class="font-semibold text-slate-800">${company.location}</div>
+                                  <div class="text-sm text-slate-600">Location</div>
+                              </div>
+                              <div class="text-center p-3 bg-slate-50 rounded-lg">
+                                  <div class="font-semibold text-slate-800">${company.employees}</div>
+                                  <div class="text-sm text-slate-600">Employees</div>
+                              </div>
+                              <div class="text-center p-3 bg-slate-50 rounded-lg">
+                                  <div class="font-semibold text-slate-800">${company.founded}</div>
+                                  <div class="text-sm text-slate-600">Founded</div>
+                              </div>
+                              <div class="text-center p-3 bg-slate-50 rounded-lg">
+                                  <div class="font-semibold text-slate-800">${company.openings.length}</div>
+                                  <div class="text-sm text-slate-600">Open Roles</div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+
+              <!-- Workplace Culture -->
+              <div class="mb-8">
+                  <h4 class="text-xl font-bold text-slate-800 mb-4">Workplace Culture</h4>
+                  <p class="text-slate-600 mb-4">${company.culture}</p>
+
+                  <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                      <div>
+                          <h5 class="font-semibold text-slate-800 mb-3">Benefits & Perks</h5>
+                          <ul class="space-y-2">
+                              ${company.benefits.map(benefit => `
+                                  <li class="flex items-center text-slate-600">
+                                      <svg class="w-4 h-4 text-success-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                                      </svg>
+                                      ${benefit}
+                                  </li>
+                              `).join('')}
+                          </ul>
+                      </div>
+
+                      <div>
+                          <h5 class="font-semibold text-slate-800 mb-3">Family-Friendly Policies</h5>
+                          <ul class="space-y-2">
+                              ${company.familyFriendly.map(policy => `
+                                  <li class="flex items-center text-slate-600">
+                                      <svg class="w-4 h-4 text-accent-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                                      </svg>
+                                      ${policy}
+                                  </li>
+                              `).join('')}
+                          </ul>
+                      </div>
+                  </div>
+              </div>
+
+              <!-- What to Expect -->
+              <div class="mb-8">
+                  <h4 class="text-xl font-bold text-slate-800 mb-4">What to Expect</h4>
+                  <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                      <div class="space-y-4">
+                          <div class="p-4 bg-primary-50 rounded-lg">
+                              <h5 class="font-semibold text-primary-800 mb-2">Dress Code</h5>
+                              <p class="text-primary-700">${company.whatToExpect.dressCode}</p>
+                          </div>
+                          <div class="p-4 bg-accent-50 rounded-lg">
+                              <h5 class="font-semibold text-accent-800 mb-2">Typical Day</h5>
+                              <p class="text-accent-700">${company.whatToExpect.typicalDay}</p>
+                          </div>
+                      </div>
+                      <div class="space-y-4">
+                          <div class="p-4 bg-success-50 rounded-lg">
+                              <h5 class="font-semibold text-success-800 mb-2">Mentorship</h5>
+                              <p class="text-success-700">${company.whatToExpect.mentorship}</p>
+                          </div>
+                          <div class="p-4 bg-secondary-50 rounded-lg">
+                              <h5 class="font-semibold text-secondary-800 mb-2">Growth Opportunities</h5>
+                              <p class="text-secondary-700">${company.whatToExpect.growth}</p>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+
+              <!-- Current Openings -->
+              <div class="mb-8">
+                  <h4 class="text-xl font-bold text-slate-800 mb-4">Current Openings</h4>
+                  <div class="space-y-4">
+                      ${company.openings.map(opening => `
+                          <div class="border border-slate-200 rounded-lg p-4 hover:border-primary-300 transition-all">
+                              <div class="flex justify-between items-start mb-2">
+                                  <h5 class="font-semibold text-slate-800">${opening.title}</h5>
+                                  <span class="text-accent-600 font-semibold">${opening.stipend}</span>
+                              </div>
+                              <div class="flex justify-between items-center">
+                                  <span class="text-slate-600">Duration: ${opening.duration}</span>
+                                  <button class="btn-primary text-sm px-4 py-2" onclick="window.location.href='opportunity_explorer.html'">
+                                      Apply Now
+                                  </button>
+                              </div>
+                          </div>
+                      `).join('')}
+                  </div>
+              </div>
+
+              <!-- Meet Your Colleagues -->
+              <div class="mb-8">
+                  <h4 class="text-xl font-bold text-slate-800 mb-4">Meet Your Potential Colleagues</h4>
+                  <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                      ${company.colleagues.map(colleague => `
+                          <div class="p-4 bg-slate-50 rounded-lg">
+                              <div class="flex items-center mb-2">
+                                  <div class="w-12 h-12 bg-primary-100 rounded-full flex items-center justify-center mr-3">
+                                      <svg class="w-6 h-6 text-primary" fill="currentColor" viewBox="0 0 20 20">
+                                          <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"/>
+                                      </svg>
+                                  </div>
+                                  <div>
+                                      <h5 class="font-semibold text-slate-800">${colleague.name}</h5>
+                                      <p class="text-slate-600 text-sm">${colleague.role}</p>
+                                  </div>
+                              </div>
+                              <p class="text-slate-600 italic">"${colleague.message}"</p>
+                          </div>
+                      `).join('')}
+                  </div>
+              </div>
+
+              <!-- Reviews -->
+              <div class="mb-8">
+                  <h4 class="text-xl font-bold text-slate-800 mb-4">Intern Reviews</h4>
+                  <div class="space-y-4">
+                      ${company.reviews.map(review => `
+                          <div class="p-4 border border-slate-200 rounded-lg">
+                              <div class="flex justify-between items-start mb-2">
+                                  <h5 class="font-semibold text-slate-800">${review.name}</h5>
+                                  <div class="flex items-center">
+                                      ${Array.from({length: review.rating}, () => `
+                                          <svg class="w-4 h-4 text-accent-500" fill="currentColor" viewBox="0 0 20 20">
+                                              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                                          </svg>
+                                      `).join('')}
+                                  </div>
+                              </div>
+                              <p class="text-slate-600">${review.review}</p>
+                          </div>
+                      `).join('')}
+                  </div>
+              </div>
+
+              <!-- Action Buttons -->
+              <div class="flex flex-col sm:flex-row gap-4">
+                  <button class="btn-primary flex-1" onclick="window.location.href='opportunity_explorer.html'">
+                      View All Openings
+                  </button>
+                  <button class="btn-accent flex-1" onclick="window.location.href='profile_builder.html'">
+                      Build Profile to Apply
+                  </button>
+              </div>
+          `;
+
+          modal.classList.remove('hidden');
+      }
+
+      function closeCompanyModal() {
+          document.getElementById('company-modal').classList.add('hidden');
+      }
+
+      function loadMoreCompanies() {
+          // Simulate loading more companies
+          alert('Loading more companies... This feature will show additional company profiles based on your preferences.');
+      }
+
+      // Close modal when clicking outside
+      document.getElementById('company-modal').addEventListener('click', function(e) {
+          if (e.target === this) {
+              closeCompanyModal();
+          }
+      });
+    </script>
+    <script id="dhws-dataInjector" src="../public/dhws-data-injector.js"></script>
+  </body>
+</html>

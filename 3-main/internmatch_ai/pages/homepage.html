@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AvsarX - Your Dream Internship is Here</title>
+    <link rel="stylesheet" href="../css/main.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <script type="module" src="https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Finternmatc6600back.builtwithrocket.new&_be=https%3A%2F%2Fapplication.rocket.new&_v=0.1.8"></script>
+  </head>
+  <body class="bg-background min-h-screen">
+    <!-- Header Navigation -->
+    <header class="bg-white shadow-sm border-b border-slate-100 sticky top-0 z-40">
+      <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+          <!-- Logo -->
+          <div class="flex items-center">
+            <img src="AvsarX-2-removebg-preview.png" alt="AvsarX Logo" class="h-8 w-8 mr-2" />
+            <span class="text-xl font-bold text-blue-600 font-accent">AvsarX</span>
+          </div>
+
+          <!-- Desktop Navigation -->
+          <div class="hidden md:flex items-center space-x-8">
+            <a href="homepage.html" class="text-primary font-semibold">Home</a>
+            <a href="opportunity_explorer.html" class="text-slate-600 hover:text-primary transition-smooth">Opportunities</a>
+            <a href="company_profiles.html" class="text-slate-600 hover:text-primary transition-smooth">Companies</a>
+            <a href="profile_builder.html" class="btn-primary">Build Profile</a>
+          </div>
+
+          <!-- Mobile Menu Button -->
+          <button class="md:hidden p-2" id="mobile-menu-btn">
+            <svg class="h-6 w-6 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+        </div>
+      </nav>
+
+      <!-- Mobile Menu -->
+      <div class="md:hidden hidden bg-white border-t border-slate-100" id="mobile-menu">
+        <div class="px-4 py-2 space-y-2">
+          <a href="homepage.html" class="block py-2 text-primary font-semibold">Home</a>
+          <a href="opportunity_explorer.html" class="block py-2 text-slate-600">Opportunities</a>
+          <a href="company_profiles.html" class="block py-2 text-slate-600">Companies</a>
+          <a href="profile_builder.html" class="block py-2 text-primary font-semibold">Build Profile</a>
+        </div>
+      </div>
+
+      <!-- Add inside your existing header/navbar where appropriate -->
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative bg-gradient-primary overflow-hidden">
+      <div class="absolute inset-0 bg-black opacity-10"></div>
+      <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
+        <div class="text-center">
+          <!-- Dynamic Greeting -->
+          <h1 class="text-4xl lg:text-6xl font-bold text-white mb-4 font-accent">
+            <span class="block">आपके सपनों का</span>
+            <div class="space1"></div>
+            <span class="block text-accent-300">Internship यहाँ है</span>
+          </h1>
+          <p class="text-xl text-blue-100 mb-8 max-w-3xl mx-auto">Beyond marks, towards potential—AI that connects you to the right internship.</p>
+
+          <!-- Main CTA with Voice Search -->
+          <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
+            <button class="btn-accent text-lg px-8 py-4 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all" id="find-match-btn">
+              <svg class="inline-block w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              Find My Perfect Match
+            </button>
+            <button id="voice-search-btn" class="bg-white bg-opacity-20 text-white px-6 py-4 rounded-lg font-semibold hover:bg-opacity-30 transition-all flex items-center">🎤 Voice Search</button>
+            <p id="voice-output" class="text-white mt-2"></p>
+          </div>
+          <button class="btn-accent ml-2" onclick="window.location.href='upload_resume.html'">Upload Resume</button>
+          <div class="space"></div>
+
+          <!-- Real-time Counters -->
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-4xl mx-auto">
+            <div class="bg-white bg-opacity-20 rounded-lg p-6 text-center">
+              <div class="text-3xl font-bold text-accent-300 mb-2" id="active-opportunitie">118K+</div>
+              <div class="text-blue-100">Internship Opportunities</div>
+            </div>
+            <div class="bg-white bg-opacity-20 rounded-lg p-6 text-center">
+              <div class="text-3xl font-bold text-accent-300 mb-2" id="successful-placements">25</div>
+              <div class="text-blue-100">Sectors Placements</div>
+            </div>
+            <div class="bg-white bg-opacity-20 rounded-lg p-6 text-center">
+              <div class="text-3xl font-bold text-accent-300 mb-2" id="tier-cities">734</div>
+              <div class="text-blue-100">Disctrict</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Success Stories Carousel -->
+    <section class="py-16 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold text-slate-800 mb-4">Success Stories</h2>
+          <p class="text-lg text-slate-600">Real journeys from students like you across India</p>
+        </div>
+
+        <div class="relative overflow-hidden">
+          <div class="flex transition-transform duration-500 ease-out" id="stories-carousel">
+            <!-- Story 1 -->
+            <div class="w-full flex-shrink-0 px-4">
+              <div class="bg-slate-50 rounded-2xl p-8 max-w-4xl mx-auto">
+                <div class="flex flex-col lg:flex-row items-center gap-8">
+                  <div class="flex-shrink-0">
+                    <img
+                      src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=400&auto=format&fit=crop"
+                      alt="Rahul Kumar"
+                      class="w-32 h-32 rounded-full object-cover"
+                      onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;" />
+                  </div>
+                  <div class="text-center lg:text-left">
+                    <blockquote class="text-xl text-slate-700 mb-4">
+                      "मैं एक छोटे शहर से हूँ और कभी नहीं सोचा था कि मुझे इतनी अच्छी internship मिल सकती है। InternMatch AI ने मेरी skills को समझा और perfect match दिया।"
+                    </blockquote>
+                    <div class="font-semibold text-slate-800">Rahul Kumar</div>
+                    <div class="text-slate-600">Software Development Intern at TechCorp</div>
+                    <div class="text-sm text-slate-500">Kanpur, Uttar Pradesh</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Story 2 -->
+            <div class="w-full flex-shrink-0 px-4">
+              <div class="bg-slate-50 rounded-2xl p-8 max-w-4xl mx-auto">
+                <div class="flex flex-col lg:flex-row items-center gap-8">
+                  <div class="flex-shrink-0">
+                    <img
+                      src="https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=400"
+                      alt="Priya Sharma"
+                      class="w-32 h-32 rounded-full object-cover"
+                      onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;" />
+                  </div>
+                  <div class="text-center lg:text-left">
+                    <blockquote class="text-xl text-slate-700 mb-4">
+                      "Being from a rural background, I never thought I could work with a top marketing firm. The AI understood my communication skills and matched me perfectly!"
+                    </blockquote>
+                    <div class="font-semibold text-slate-800">Priya Sharma</div>
+                    <div class="text-slate-600">Digital Marketing Intern at BrandWorks</div>
+                    <div class="text-sm text-slate-500">Jaipur, Rajasthan</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Story 3 -->
+            <div class="w-full flex-shrink-0 px-4">
+              <div class="bg-slate-50 rounded-2xl p-8 max-w-4xl mx-auto">
+                <div class="flex flex-col lg:flex-row items-center gap-8">
+                  <div class="flex-shrink-0">
+                    <img
+                      src="https://images.pixabay.com/photo/2016/11/21/12/42/beard-1845166_960_720.jpg"
+                      alt="Arjun Patel"
+                      class="w-32 h-32 rounded-full object-cover"
+                      onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;" />
+                  </div>
+                  <div class="text-center lg:text-left">
+                    <blockquote class="text-xl text-slate-700 mb-4">
+                      "મારી engineering background અને local business experience ને AI એ perfectly combine કર્યું. હવે હું startup ecosystem માં કામ કરું છું!"
+                    </blockquote>
+                    <div class="font-semibold text-slate-800">Arjun Patel</div>
+                    <div class="text-slate-600">Business Development Intern at StartupHub</div>
+                    <div class="text-sm text-slate-500">Ahmedabad, Gujarat</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Carousel Controls -->
+          <button class="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white rounded-full p-3 shadow-lg hover:shadow-xl transition-all" id="prev-story">
+            <svg class="w-6 h-6 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
+          <button class="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white rounded-full p-3 shadow-lg hover:shadow-xl transition-all" id="next-story">
+            <svg class="w-6 h-6 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="py-16 bg-slate-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold text-slate-800 mb-4">How It Works</h2>
+          <p class="text-lg text-slate-600">Simple steps to your dream internship</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <!-- Step 1 -->
+          <div class="text-center group cursor-pointer" onclick="toggleStep(1)">
+            <div class="bg-primary rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 group-hover:bg-primary-700 transition-all">
+              <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-slate-800 mb-2">Build Profile</h3>
+            <p class="text-slate-600">Share your skills, interests, and background</p>
+            <div class="hidden mt-4 p-4 bg-white rounded-lg shadow-sm" id="step-1-details">
+              <p class="text-sm text-slate-600">
+                Our AI-powered questionnaire understands your unique background, even if you're a first-time digital user. Voice input available in multiple Indian languages.
+              </p>
+            </div>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="text-center group cursor-pointer" onclick="toggleStep(2)">
+            <div class="bg-primary rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 group-hover:bg-primary-700 transition-all">
+              <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-slate-800 mb-2">AI Match</h3>
+            <p class="text-slate-600">Get personalized internship recommendations</p>
+            <div class="hidden mt-4 p-4 bg-white rounded-lg shadow-sm" id="step-2-details">
+              <p class="text-sm text-slate-600">
+                Advanced algorithms analyze your potential beyond traditional qualifications, finding opportunities that match your unique strengths and career aspirations.
+              </p>
+            </div>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="text-center group cursor-pointer" onclick="toggleStep(3)">
+            <div class="bg-primary rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 group-hover:bg-primary-700 transition-all">
+              <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                <path
+                  fill-rule="evenodd"
+                  d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z"
+                  clip-rule="evenodd" />
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-slate-800 mb-2">Apply</h3>
+            <p class="text-slate-600">One-click applications with guided support</p>
+            <div class="hidden mt-4 p-4 bg-white rounded-lg shadow-sm" id="step-3-details">
+              <p class="text-sm text-slate-600">Simplified application process with pre-filled forms, interview preparation resources, and real-time application tracking via SMS and WhatsApp.</p>
+            </div>
+          </div>
+
+          <!-- Step 4 -->
+          <div class="text-center group cursor-pointer" onclick="toggleStep(4)">
+            <div class="bg-accent rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 group-hover:bg-accent-600 transition-all">
+              <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                <path
+                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-slate-800 mb-2">Success</h3>
+            <p class="text-slate-600">Start your career journey with confidence</p>
+            <div class="hidden mt-4 p-4 bg-white rounded-lg shadow-sm" id="step-4-details">
+              <p class="text-sm text-slate-600">Join our alumni network, access ongoing mentorship, and build your professional network while gaining valuable work experience.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Live Opportunity Feed -->
+    <section class="py-16 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center mb-12">
+          <div>
+            <h2 class="text-3xl font-bold text-slate-800 mb-2">Latest Opportunities</h2>
+            <p class="text-lg text-slate-600">Fresh internships posted today</p>
+          </div>
+          <a href="opportunity_explorer.html" class="btn-primary">View All</a>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Opportunity 1 -->
+          <div class="card hover:shadow-xl transition-all cursor-pointer" onclick="window.location.href='opportunity_explorer.html'">
+            <div class="flex items-center mb-4">
+              <img
+                src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?q=80&w=100&auto=format&fit=crop"
+                alt="TechCorp Logo"
+                class="w-12 h-12 rounded-lg object-cover mr-3"
+                onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;" />
+              <div>
+                <h3 class="font-semibold text-slate-800">Software Development Intern</h3>
+                <p class="text-sm text-slate-600">TechCorp Solutions</p>
+              </div>
+            </div>
+            <div class="space-y-2 mb-4">
+              <div class="flex items-center text-sm text-slate-600">
+                <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
+                </svg>
+                Pune, Maharashtra
+              </div>
+              <div class="flex items-center text-sm text-slate-600">
+                <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd" />
+                </svg>
+                3 months
+              </div>
+              <div class="flex items-center text-sm font-semibold text-accent-600">
+                <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                  <path
+                    d="M8.433 7.418c.155-.103.346-.196.567-.267v1.698a2.305 2.305 0 01-.567-.267C8.07 8.34 8 8.114 8 8c0-.114.07-.34.433-.582zM11 12.849v-1.698c.22.071.412.164.567.267.364.243.433.468.433.582 0 .114-.07.34-.433.582a2.305 2.305 0 01-.567.267z" />
+                  <path
+                    fill-rule="evenodd"
+                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm-6-8c0-1.098.5-2.117 1.318-2.776.822-.659 1.958-.924 3.682-.924v-1.3a1 1 0 012 0v1.3c1.724 0 2.86.265 3.682.924C15.5 5.883 16 6.902 16 8s-.5 2.117-1.318 2.776c-.822.659-1.958.924-3.682.924v1.3a1 1 0 11-2 0v-1.3c-1.724 0-2.86-.265-3.682-.924C4.5 10.117 4 9.098 4 8z"
+                    clip-rule="evenodd" />
+                </svg>
+                ₹25,000/month
+              </div>
+            </div>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-2 py-1 bg-primary-100 text-primary-700 text-xs rounded-full">React</span>
+              <span class="px-2 py-1 bg-primary-100 text-primary-700 text-xs rounded-full">Node.js</span>
+              <span class="px-2 py-1 bg-success-100 text-success-700 text-xs rounded-full">Remote OK</span>
+            </div>
+          </div>
+
+          <!-- Opportunity 2 -->
+          <div class="card hover:shadow-xl transition-all cursor-pointer" onclick="window.location.href='opportunity_explorer.html'">
+            <div class="flex items-center mb-4">
+              <img
+                src="https://images.pexels.com/photos/267350/pexels-photo-267350.jpeg?auto=compress&cs=tinysrgb&w=100"
+                alt="BrandWorks Logo"
+                class="w-12 h-12 rounded-lg object-cover mr-3"
+                onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;" />
+              <div>
+                <h3 class="font-semibold text-slate-800">Digital Marketing Intern</h3>
+                <p class="text-sm text-slate-600">BrandWorks Agency</p>
+              </div>
+            </div>
+            <div class="space-y-2 mb-4">
+              <div class="flex items-center text-sm text-slate-600">
+                <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
+                </svg>
+                Jaipur, Rajasthan
+              </div>
+              <div class="flex items-center text-sm text-slate-600">
+                <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd" />
+                </svg>
+                6 months
+              </div>
+              <div class="flex items-center text-sm font-semibold text-accent-600">
+                <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                  <path
+                    d="M8.433 7.418c.155-.103.346-.196.567-.267v1.698a2.305 2.305 0 01-.567-.267C8.07 8.34 8 8.114 8 8c0-.114.07-.34.433-.582zM11 12.849v-1.698c.22.071.412.164.567.267.364.243.433.468.433.582 0 .114-.07.34-.433.582a2.305 2.305 0 01-.567.267z" />
+                  <path
+                    fill-rule="evenodd"
+                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm-6-8c0-1.098.5-2.117 1.318-2.776.822-.659 1.958-.924 3.682-.924v-1.3a1 1 0 012 0v1.3c1.724 0 2.86.265 3.682.924C15.5 5.883 16 6.902 16 8s-.5 2.117-1.318 2.776c-.822.659-1.958.924-3.682.924v1.3a1 1 0 11-2 0v-1.3c-1.724 0-2.86-.265-3.682-.924C4.5 10.117 4 9.098 4 8z"
+                    clip-rule="evenodd" />
+                </svg>
+                ₹18,000/month
+              </div>
+            </div>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-2 py-1 bg-accent-100 text-accent-700 text-xs rounded-full">Social Media</span>
+              <span class="px-2 py-1 bg-accent-100 text-accent-700 text-xs rounded-full">Content Writing</span>
+              <span class="px-2 py-1 bg-warning-100 text-warning-700 text-xs rounded-full">Urgent</span>
+            </div>
+          </div>
+
+          <!-- Opportunity 3 -->
+          <div class="card hover:shadow-xl transition-all cursor-pointer" onclick="window.location.href='opportunity_explorer.html'">
+            <div class="flex items-center mb-4">
+              <img
+                src="https://images.pixabay.com/photo/2016/12/30/10/03/office-1940733_960_720.jpg"
+                alt="StartupHub Logo"
+                class="w-12 h-12 rounded-lg object-cover mr-3"
+                onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;" />
+              <div>
+                <h3 class="font-semibold text-slate-800">Business Development Intern</h3>
+                <p class="text-sm text-slate-600">StartupHub Incubator</p>
+              </div>
+            </div>
+            <div class="space-y-2 mb-4">
+              <div class="flex items-center text-sm text-slate-600">
+                <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
+                </svg>
+                Ahmedabad, Gujarat
+              </div>
+              <div class="flex items-center text-sm text-slate-600">
+                <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd" />
+                </svg>
+                4 months
+              </div>
+              <div class="flex items-center text-sm font-semibold text-accent-600">
+                <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                  <path
+                    d="M8.433 7.418c.155-.103.346-.196.567-.267v1.698a2.305 2.305 0 01-.567-.267C8.07 8.34 8 8.114 8 8c0-.114.07-.34.433-.582zM11 12.849v-1.698c.22.071.412.164.567.267.364.243.433.468.433.582 0 .114-.07.34-.433.582a2.305 2.305 0 01-.567.267z" />
+                  <path
+                    fill-rule="evenodd"
+                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm-6-8c0-1.098.5-2.117 1.318-2.776.822-.659 1.958-.924 3.682-.924v-1.3a1 1 0 012 0v1.3c1.724 0 2.86.265 3.682.924C15.5 5.883 16 6.902 16 8s-.5 2.117-1.318 2.776c-.822.659-1.958.924-3.682.924v1.3a1 1 0 11-2 0v-1.3c-1.724 0-2.86-.265-3.682-.924C4.5 10.117 4 9.098 4 8z"
+                    clip-rule="evenodd" />
+                </svg>
+                ₹22,000/month
+              </div>
+            </div>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-2 py-1 bg-secondary-100 text-secondary-700 text-xs rounded-full">Sales</span>
+              <span class="px-2 py-1 bg-secondary-100 text-secondary-700 text-xs rounded-full">Strategy</span>
+              <span class="px-2 py-1 bg-success-100 text-success-700 text-xs rounded-full">Growth</span>
+            </div>
+          </div>
+
+          <!-- Opportunity 4 -->
+          <div class="card hover:shadow-xl transition-all cursor-pointer" onclick="window.location.href='opportunity_explorer.html'">
+            <div class="flex items-center mb-4">
+              <img
+                src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?q=80&w=100&auto=format&fit=crop"
+                alt="DataTech Logo"
+                class="w-12 h-12 rounded-lg object-cover mr-3"
+                onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;" />
+              <div>
+                <h3 class="font-semibold text-slate-800">Data Analytics Intern</h3>
+                <p class="text-sm text-slate-600">DataTech Solutions</p>
+              </div>
+            </div>
+            <div class="space-y-2 mb-4">
+              <div class="flex items-center text-sm text-slate-600">
+                <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
+                </svg>
+                Bangalore, Karnataka
+              </div>
+              <div class="flex items-center text-sm text-slate-600">
+                <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd" />
+                </svg>
+                6 months
+              </div>
+              <div class="flex items-center text-sm font-semibold text-accent-600">
+                <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                  <path
+                    d="M8.433 7.418c.155-.103.346-.196.567-.267v1.698a2.305 2.305 0 01-.567-.267C8.07 8.34 8 8.114 8 8c0-.114.07-.34.433-.582zM11 12.849v-1.698c.22.071.412.164.567.267.364.243.433.468.433.582 0 .114-.07.34-.433.582a2.305 2.305 0 01-.567.267z" />
+                  <path
+                    fill-rule="evenodd"
+                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm-6-8c0-1.098.5-2.117 1.318-2.776.822-.659 1.958-.924 3.682-.924v-1.3a1 1 0 012 0v1.3c1.724 0 2.86.265 3.682.924C15.5 5.883 16 6.902 16 8s-.5 2.117-1.318 2.776c-.822.659-1.958.924-3.682.924v1.3a1 1 0 11-2 0v-1.3c-1.724 0-2.86-.265-3.682-.924C4.5 10.117 4 9.098 4 8z"
+                    clip-rule="evenodd" />
+                </svg>
+                ₹30,000/month
+              </div>
+            </div>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-2 py-1 bg-primary-100 text-primary-700 text-xs rounded-full">Python</span>
+              <span class="px-2 py-1 bg-primary-100 text-primary-700 text-xs rounded-full">SQL</span>
+              <span class="px-2 py-1 bg-accent-100 text-accent-700 text-xs rounded-full">High Demand</span>
+            </div>
+          </div>
+
+          <!-- Opportunity 5 -->
+          <div class="card hover:shadow-xl transition-all cursor-pointer" onclick="window.location.href='opportunity_explorer.html'">
+            <div class="flex items-center mb-4">
+              <img
+                src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=100"
+                alt="CreativeStudio Logo"
+                class="w-12 h-12 rounded-lg object-cover mr-3"
+                onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;" />
+              <div>
+                <h3 class="font-semibold text-slate-800">UI/UX Design Intern</h3>
+                <p class="text-sm text-slate-600">CreativeStudio</p>
+              </div>
+            </div>
+            <div class="space-y-2 mb-4">
+              <div class="flex items-center text-sm text-slate-600">
+                <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
+                </svg>
+                Hyderabad, Telangana
+              </div>
+              <div class="flex items-center text-sm text-slate-600">
+                <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd" />
+                </svg>
+                3 months
+              </div>
+              <div class="flex items-center text-sm font-semibold text-accent-600">
+                <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                  <path
+                    d="M8.433 7.418c.155-.103.346-.196.567-.267v1.698a2.305 2.305 0 01-.567-.267C8.07 8.34 8 8.114 8 8c0-.114.07-.34.433-.582zM11 12.849v-1.698c.22.071.412.164.567.267.364.243.433.468.433.582 0 .114-.07.34-.433.582a2.305 2.305 0 01-.567.267z" />
+                  <path
+                    fill-rule="evenodd"
+                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm-6-8c0-1.098.5-2.117 1.318-2.776.822-.659 1.958-.924 3.682-.924v-1.3a1 1 0 012 0v1.3c1.724 0 2.86.265 3.682.924C15.5 5.883 16 6.902 16 8s-.5 2.117-1.318 2.776c-.822.659-1.958.924-3.682.924v1.3a1 1 0 11-2 0v-1.3c-1.724 0-2.86-.265-3.682-.924C4.5 10.117 4 9.098 4 8z"
+                    clip-rule="evenodd" />
+                </svg>
+                ₹20,000/month
+              </div>
+            </div>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-2 py-1 bg-secondary-100 text-secondary-700 text-xs rounded-full">Figma</span>
+              <span class="px-2 py-1 bg-secondary-100 text-secondary-700 text-xs rounded-full">Prototyping</span>
+              <span class="px-2 py-1 bg-success-100 text-success-700 text-xs rounded-full">Creative</span>
+            </div>
+          </div>
+
+          <!-- Opportunity 6 -->
+          <div class="card hover:shadow-xl transition-all cursor-pointer" onclick="window.location.href='opportunity_explorer.html'">
+            <div class="flex items-center mb-4">
+              <img
+                src="https://images.pixabay.com/photo/2016/11/19/14/00/code-1839406_960_720.jpg"
+                alt="FinTech Logo"
+                class="w-12 h-12 rounded-lg object-cover mr-3"
+                onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;" />
+              <div>
+                <h3 class="font-semibold text-slate-800">FinTech Product Intern</h3>
+                <p class="text-sm text-slate-600">PayNext Solutions</p>
+              </div>
+            </div>
+            <div class="space-y-2 mb-4">
+              <div class="flex items-center text-sm text-slate-600">
+                <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
+                </svg>
+                Mumbai, Maharashtra
+              </div>
+              <div class="flex items-center text-sm text-slate-600">
+                <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd" />
+                </svg>
+                6 months
+              </div>
+              <div class="flex items-center text-sm font-semibold text-accent-600">
+                <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                  <path
+                    d="M8.433 7.418c.155-.103.346-.196.567-.267v1.698a2.305 2.305 0 01-.567-.267C8.07 8.34 8 8.114 8 8c0-.114.07-.34.433-.582zM11 12.849v-1.698c.22.071.412.164.567.267.364.243.433.468.433.582 0 .114-.07.34-.433.582a2.305 2.305 0 01-.567.267z" />
+                  <path
+                    fill-rule="evenodd"
+                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm-6-8c0-1.098.5-2.117 1.318-2.776.822-.659 1.958-.924 3.682-.924v-1.3a1 1 0 012 0v1.3c1.724 0 2.86.265 3.682.924C15.5 5.883 16 6.902 16 8s-.5 2.117-1.318 2.776c-.822.659-1.958.924-3.682.924v1.3a1 1 0 11-2 0v-1.3c-1.724 0-2.86-.265-3.682-.924C4.5 10.117 4 9.098 4 8z"
+                    clip-rule="evenodd" />
+                </svg>
+                ₹35,000/month
+              </div>
+            </div>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-2 py-1 bg-accent-100 text-accent-700 text-xs rounded-full">Product</span>
+              <span class="px-2 py-1 bg-accent-100 text-accent-700 text-xs rounded-full">Finance</span>
+              <span class="px-2 py-1 bg-error-100 text-error-700 text-xs rounded-full">Hot</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sticky Bottom Navigation -->
+    <div class="fixed bottom-0 left-0 right-0 bg-white border-t border-slate-200 px-4 py-2 z-50 md:hidden">
+      <div class="flex justify-around items-center">
+        <a href="opportunity_explorer.html" class="flex flex-col items-center py-2 px-4 text-primary">
+          <svg class="w-6 h-6 mb-1" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
+          </svg>
+          <span class="text-xs font-medium">Find Internships</span>
+        </a>
+        <a href="profile_builder.html" class="flex flex-col items-center py-2 px-4 text-slate-600">
+          <svg class="w-6 h-6 mb-1" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
+          </svg>
+          <span class="text-xs">My Profile</span>
+        </a>
+        <a href="application_manager.html" class="flex flex-col items-center py-2 px-4 text-slate-600">
+          <svg class="w-6 h-6 mb-1" fill="currentColor" viewBox="0 0 20 20">
+            <path
+              fill-rule="evenodd"
+              d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z"
+              clip-rule="evenodd" />
+          </svg>
+          <span class="text-xs">Applications</span>
+        </a>
+        <button class="flex flex-col items-center py-2 px-4 text-slate-600" onclick="showHelp()">
+          <svg class="w-6 h-6 mb-1" fill="currentColor" viewBox="0 0 20 20">
+            <path
+              fill-rule="evenodd"
+              d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z"
+              clip-rule="evenodd" />
+          </svg>
+          <span class="text-xs">Help</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Assessment Overlay -->
+    <div class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden" id="assessment-overlay">
+      <div class="flex items-center justify-center min-h-screen p-4">
+        <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-modal">
+          <div class="text-center mb-6">
+            <h3 class="text-2xl font-bold text-slate-800 mb-2">Quick Assessment</h3>
+            <p class="text-slate-600">Help us find your perfect internship match</p>
+          </div>
+
+          <div id="question-1" class="assessment-question">
+            <h4 class="font-semibold text-slate-800 mb-4">What interests you most?</h4>
+            <div class="space-y-3">
+              <button class="w-full text-left p-3 border border-slate-200 rounded-lg hover:border-primary hover:bg-primary-50 transition-all" onclick="selectAnswer(1, 'technology')">
+                <div class="font-medium">Technology & Programming</div>
+                <div class="text-sm text-slate-600">Building apps, websites, and software</div>
+              </button>
+              <button class="w-full text-left p-3 border border-slate-200 rounded-lg hover:border-primary hover:bg-primary-50 transition-all" onclick="selectAnswer(1, 'business')">
+                <div class="font-medium">Business & Marketing</div>
+                <div class="text-sm text-slate-600">Sales, strategy, and growth</div>
+              </button>
+              <button class="w-full text-left p-3 border border-slate-200 rounded-lg hover:border-primary hover:bg-primary-50 transition-all" onclick="selectAnswer(1, 'creative')">
+                <div class="font-medium">Creative & Design</div>
+                <div class="text-sm text-slate-600">Visual design, content creation</div>
+              </button>
+            </div>
+          </div>
+
+          <div id="question-2" class="assessment-question hidden">
+            <h4 class="font-semibold text-slate-800 mb-4">What's your experience level?</h4>
+            <div class="space-y-3">
+              <button class="w-full text-left p-3 border border-slate-200 rounded-lg hover:border-primary hover:bg-primary-50 transition-all" onclick="selectAnswer(2, 'beginner')">
+                <div class="font-medium">Beginner</div>
+                <div class="text-sm text-slate-600">Just starting my career journey</div>
+              </button>
+              <button class="w-full text-left p-3 border border-slate-200 rounded-lg hover:border-primary hover:bg-primary-50 transition-all" onclick="selectAnswer(2, 'intermediate')">
+                <div class="font-medium">Some Experience</div>
+                <div class="text-sm text-slate-600">Have done projects or courses</div>
+              </button>
+              <button class="w-full text-left p-3 border border-slate-200 rounded-lg hover:border-primary hover:bg-primary-50 transition-all" onclick="selectAnswer(2, 'advanced')">
+                <div class="font-medium">Experienced</div>
+                <div class="text-sm text-slate-600">Ready for challenging roles</div>
+              </button>
+            </div>
+          </div>
+
+          <div id="question-3" class="assessment-question hidden">
+            <h4 class="font-semibold text-slate-800 mb-4">Preferred work location?</h4>
+            <div class="space-y-3">
+              <button class="w-full text-left p-3 border border-slate-200 rounded-lg hover:border-primary hover:bg-primary-50 transition-all" onclick="selectAnswer(3, 'remote')">
+                <div class="font-medium">Remote Work</div>
+                <div class="text-sm text-slate-600">Work from anywhere</div>
+              </button>
+              <button class="w-full text-left p-3 border border-slate-200 rounded-lg hover:border-primary hover:bg-primary-50 transition-all" onclick="selectAnswer(3, 'office')">
+                <div class="font-medium">Office Environment</div>
+                <div class="text-sm text-slate-600">In-person collaboration</div>
+              </button>
+              <button class="w-full text-left p-3 border border-slate-200 rounded-lg hover:border-primary hover:bg-primary-50 transition-all" onclick="selectAnswer(3, 'hybrid')">
+                <div class="font-medium">Hybrid</div>
+                <div class="text-sm text-slate-600">Mix of remote and office</div>
+              </button>
+            </div>
+          </div>
+
+          <div id="assessment-result" class="hidden text-center">
+            <div class="mb-4">
+              <svg class="w-16 h-16 text-success-500 mx-auto mb-4" fill="currentColor" viewBox="0 0 20 20">
+                <path
+                  fill-rule="evenodd"
+                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                  clip-rule="evenodd" />
+              </svg>
+            </div>
+            <h4 class="text-xl font-bold text-slate-800 mb-2">Perfect! We found matches for you</h4>
+            <p class="text-slate-600 mb-6">Based on your preferences, we've identified 12 relevant internships</p>
+            <button class="btn-primary w-full" onclick="window.location.href='ai_recommendation_dashboard.html'">View My Recommendations</button>
+          </div>
+
+          <button class="absolute top-4 right-4 text-slate-400 hover:text-slate-600" onclick="closeAssessment()">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-slate-800 text-white py-12 mb-16 md:mb-0">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <div>
+            <div class="flex items-center">
+              <img src="AvsarX-2-removebg-preview.png" alt="AvsarX Logo" class="h-8 w-8 mr-2" />
+              <span class="text-xl font-bold text-blue-600 font-accent">AvsarX</span>
+            </div>
+            <div class="space2"></div>
+            <p class="text-slate-300 mb-4">
+              An AI-powered platform under the PM Internship Scheme that matches candidates to opportunities based on their skills, interests, aspirations, and qualifications.
+            </p>
+            <div class="flex space-x-4">
+              <a href="javascript:void(0)" class="text-slate-400 hover:text-white transition-smooth">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                  <path
+                    fill-rule="evenodd"
+                    d="M20 10c0-5.523-4.477-10-10-10S0 4.477 0 10c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V10h2.54V7.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V10h2.773l-.443 2.89h-2.33v6.988C16.343 19.128 20 14.991 20 10z"
+                    clip-rule="evenodd" />
+                </svg>
+              </a>
+              <a href="javascript:void(0)" class="text-slate-400 hover:text-white transition-smooth">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                  <path
+                    d="M6.29 18.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0020 3.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.073 4.073 0 01.8 7.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 010 16.407a11.616 11.616 0 006.29 1.84" />
+                </svg>
+              </a>
+              <a href="javascript:void(0)" class="text-slate-400 hover:text-white transition-smooth">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                  <path
+                    fill-rule="evenodd"
+                    d="M16.338 16.338H13.67V12.16c0-.995-.017-2.277-1.387-2.277-1.39 0-1.601 1.086-1.601 2.207v4.248H8.014v-8.59h2.559v1.174h.037c.356-.675 1.227-1.387 2.526-1.387 2.703 0 3.203 1.778 3.203 4.092v4.711zM5.005 6.575a1.548 1.548 0 11-.003-3.096 1.548 1.548 0 01.003 3.096zm-1.337 9.763H6.34v-8.59H3.667v8.59zM17.668 1H2.328C1.595 1 1 1.581 1 2.298v15.403C1 18.418 1.595 19 2.328 19h15.34c.734 0 1.332-.582 1.332-1.299V2.298C19 1.581 18.402 1 17.668 1z"
+                    clip-rule="evenodd" />
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          <div>
+            <h3 class="font-semibold mb-4">For Students</h3>
+            <ul class="space-y-2 text-slate-300">
+              <li>
+                <a>Find Internships</a>
+              </li>
+              <li>
+                <a>Build Profile</a>
+              </li>
+              <li>
+                <a>AI Recommendations</a>
+              </li>
+              <li>
+                <a>Track Applications</a>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="font-semibold mb-4">For Employers</h3>
+            <ul class="space-y-2 text-slate-300">
+              <li>
+                <a>Post Internships</a>
+              </li>
+              <li>
+                <a>Find Talent</a>
+              </li>
+              <li>
+                <a>Employer Dashboard</a>
+              </li>
+              <li>
+                <a>Pricing</a>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="font-semibold mb-4">Support</h3>
+            <ul class="space-y-2 text-slate-300">
+              <li>
+                <p>Help Center</p>
+              </li>
+              <li>
+                <p>Contact Us</p>
+              </li>
+              <li>
+                <p>Privacy Policy</p>
+              </li>
+              <li>
+                <p>Terms of Service</p>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="border-t border-slate-700 mt-8 pt-8 text-center text-slate-400">
+          <p>&copy; 2025 AvsarX. All Rights Reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Mobile menu toggle
+      document
+        .getElementById("mobile-menu-btn")
+        .addEventListener("click", function () {
+          const mobileMenu = document.getElementById("mobile-menu");
+          mobileMenu.classList.toggle("hidden");
+        });
+
+      // Assessment overlay
+      let currentQuestion = 1;
+      let assessmentAnswers = {};
+
+      document
+        .getElementById("find-match-btn")
+        .addEventListener("click", function () {
+          document
+            .getElementById("assessment-overlay")
+            .classList.remove("hidden");
+        });
+
+      function selectAnswer(questionNum, answer) {
+        assessmentAnswers[questionNum] = answer;
+
+        if (questionNum < 3) {
+          document
+            .getElementById(`question-${questionNum}`)
+            .classList.add("hidden");
+          document
+            .getElementById(`question-${questionNum + 1}`)
+            .classList.remove("hidden");
+          currentQuestion++;
+        } else {
+          // Show result
+          document.getElementById("question-3").classList.add("hidden");
+          document
+            .getElementById("assessment-result")
+            .classList.remove("hidden");
+        }
+      }
+
+      function closeAssessment() {
+        document.getElementById("assessment-overlay").classList.add("hidden");
+        currentQuestion = 1;
+        assessmentAnswers = {};
+        // Reset questions
+        document
+          .querySelectorAll(".assessment-question")
+          .forEach((q) => q.classList.add("hidden"));
+        document.getElementById("question-1").classList.remove("hidden");
+        document.getElementById("assessment-result").classList.add("hidden");
+      }
+
+      // Success stories carousel
+      let currentStory = 0;
+      const totalStories = 3;
+
+      document
+        .getElementById("next-story")
+        .addEventListener("click", function () {
+          currentStory = (currentStory + 1) % totalStories;
+          updateCarousel();
+        });
+
+      document
+        .getElementById("prev-story")
+        .addEventListener("click", function () {
+          currentStory = (currentStory - 1 + totalStories) % totalStories;
+          updateCarousel();
+        });
+
+      function updateCarousel() {
+        const carousel = document.getElementById("stories-carousel");
+        carousel.style.transform = `translateX(-${currentStory * 100}%)`;
+      }
+
+      // Auto-rotate carousel
+      setInterval(() => {
+        currentStory = (currentStory + 1) % totalStories;
+        updateCarousel();
+      }, 5000);
+
+      // How it works step toggle
+      function toggleStep(stepNum) {
+        const details = document.getElementById(`step-${stepNum}-details`);
+        details.classList.toggle("hidden");
+      }
+
+      // Voice search functionality
+      document
+        .getElementById("voice-search-btn")
+        .addEventListener("click", function () {
+          if ("webkitSpeechRecognition" in window) {
+            const recognition = new webkitSpeechRecognition();
+            recognition.lang = "hi-IN";
+            recognition.start();
+
+            recognition.onresult = function (event) {
+              const transcript = event.results[0][0].transcript;
+              alert(
+                `आपने कहा: "${transcript}"\nSearching for relevant internships...`
+              );
+              // Redirect to opportunity explorer with search
+              window.location.href = "opportunity_explorer.html";
+            };
+          } else {
+            alert(
+              "Voice search is not supported in your browser. Please use the text search instead."
+            );
+          }
+        });
+
+      // Help function
+      function showHelp() {
+        alert(
+          "Need help? Call our support team at 1800-123-4567 or WhatsApp us at +91-9876543210. We support Hindi, English, and 10+ regional languages!"
+        );
+      }
+
+      // Real-time counter animation
+      function animateCounters() {
+        const counters = [
+          { id: "active-opportunities", target: 2847 },
+          { id: "successful-placements", target: 15632 },
+          { id: "tier-cities", target: 450 },
+        ];
+
+        counters.forEach((counter) => {
+          const element = document.getElementById(counter.id);
+          let current = 0;
+          const increment = counter.target / 100;
+
+          const timer = setInterval(() => {
+            current += increment;
+            if (current >= counter.target) {
+              current = counter.target;
+              clearInterval(timer);
+            }
+
+            if (counter.id === "tier-cities") {
+              element.textContent = Math.floor(current) + "+";
+            } else {
+              element.textContent = Math.floor(current).toLocaleString("en-IN");
+            }
+          }, 20);
+        });
+      }
+
+      // Start counter animation when page loads
+      window.addEventListener("load", animateCounters);
+    </script>
+    <script id="dhws-dataInjector" src="../public/dhws-data-injector.js"></script>
+  </body>
+</html>

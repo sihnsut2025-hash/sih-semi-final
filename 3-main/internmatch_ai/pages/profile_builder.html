@@ -1,0 +1,1425 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profile Builder - AvsarX</title>
+    <link rel="stylesheet" href="../css/main.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <script type="module" src="https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Finternmatc6600back.builtwithrocket.new&_be=https%3A%2F%2Fapplication.rocket.new&_v=0.1.8"></script>
+  </head>
+  <body class="bg-slate-50 min-h-screen">
+    <!-- Header Navigation -->
+    <header class="bg-white shadow-sm border-b border-slate-100 sticky top-0 z-40">
+      <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+          <!-- Logo -->
+          <div class="flex items-center">
+            <img src="AvsarX-2-removebg-preview.png" alt="AvsarX Logo" class="h-8 w-8 mr-2" />
+            <span class="text-xl font-bold text-blue-600 font-accent">AvsarX</span>
+          </div>
+
+          <!-- Desktop Navigation -->
+          <div class="hidden md:flex items-center space-x-8">
+            <a href="homepage.html" class="text-slate-600 hover:text-primary transition-smooth">Home</a>
+            <a href="opportunity_explorer.html" class="text-slate-600 hover:text-primary transition-smooth">Opportunities</a>
+            <a href="company_profiles.html" class="text-slate-600 hover:text-primary transition-smooth">Companies</a>
+            <a href="profile_builder.html" class="text-primary font-semibold">Build Profile</a>
+          </div>
+
+          <!-- Mobile Menu Button -->
+          <button class="md:hidden p-2" id="mobile-menu-btn">
+            <svg class="h-6 w-6 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+        </div>
+      </nav>
+
+      <!-- Mobile Menu -->
+      <div class="md:hidden hidden bg-white border-t border-slate-100" id="mobile-menu">
+        <div class="px-4 py-2 space-y-2">
+          <a href="homepage.html" class="block py-2 text-slate-600">Home</a>
+          <a href="opportunity_explorer.html" class="block py-2 text-slate-600">Opportunities</a>
+          <a href="company_profiles.html" class="block py-2 text-slate-600">Companies</a>
+          <a href="profile_builder.html" class="block py-2 text-primary font-semibold">Build Profile</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Progress Bar -->
+    <div class="bg-white border-b border-slate-200">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+        <div class="flex items-center justify-between mb-2">
+          <h2 class="text-lg font-semibold text-slate-800">Build Your Profile</h2>
+          <span class="text-sm text-slate-600" id="progress-text">Step 1 of 5</span>
+        </div>
+        <div class="w-full bg-slate-200 rounded-full h-2">
+          <div class="bg-primary rounded-full h-2 transition-all duration-500" id="progress-bar" style="width: 20%"></div>
+        </div>
+        <div class="text-xs text-slate-500 mt-1" id="motivational-message">Great start! Let's learn about you...</div>
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <!-- Language Selection Modal -->
+
+      <!-- Step 1: Basic Information -->
+      <div class="profile-step active" id="step-1">
+        <div class="bg-white rounded-2xl shadow-sm p-8">
+          <div class="text-center mb-8">
+            <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
+              </svg>
+            </div>
+            <h2 class="text-3xl font-bold text-slate-800 mb-2">Let's start with the basics</h2>
+            <p class="text-lg text-slate-600">Tell us about yourself so we can find the perfect opportunities for you</p>
+          </div>
+
+          <div class="space-y-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <label class="block text-sm font-semibold text-slate-700 mb-2">What's your name?</label>
+                <input
+                  type="text"
+                  id="full-name"
+                  class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-lg"
+                  placeholder="e.g., Priya Sharma" />
+              </div>
+              <div>
+                <label class="block text-sm font-semibold text-slate-700 mb-2">How old are you?</label>
+                <select id="age" class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-lg">
+                  <option value>Select your age</option>
+                  <option value="16-18">16-18 years</option>
+                  <option value="19-21">19-21 years</option>
+                  <option value="22-25">22-25 years</option>
+                  <option value="26+">26+ years</option>
+                </select>
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-sm font-semibold text-slate-700 mb-2">Which city are you from?</label>
+              <div class="relative">
+                <input
+                  type="text"
+                  id="location"
+                  class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-lg"
+                  placeholder="e.g., Kanpur, Uttar Pradesh" />
+                <button type="button" class="absolute right-3 top-3 text-slate-400 hover:text-primary" onclick="startVoiceInput('location')">
+                  <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                    <path
+                      fill-rule="evenodd"
+                      d="M7 4a3 3 0 016 0v4a3 3 0 11-6 0V4zm4 10.93A7.001 7.001 0 0017 8a1 1 0 10-2 0A5 5 0 015 8a1 1 0 00-2 0 7.001 7.001 0 006 6.93V17H6a1 1 0 100 2h8a1 1 0 100-2h-3v-2.07z"
+                      clip-rule="evenodd" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-sm font-semibold text-slate-700 mb-2">What's your contact number?</label>
+              <input
+                type="tel"
+                id="phone"
+                class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-lg"
+                placeholder="e.g., +91 9876543210" />
+            </div>
+
+            <div>
+              <label class="block text-sm font-semibold text-slate-700 mb-2">Email address (optional)</label>
+              <input
+                type="email"
+                id="email"
+                class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-lg"
+                placeholder="e.g., priya@example.com" />
+            </div>
+          </div>
+
+          <div class="mt-8 flex justify-between">
+            <div></div>
+            <button class="btn-primary" onclick="nextStep(1)">Continue →</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 2: Education Background -->
+      <div class="profile-step" id="step-2">
+        <div class="bg-white rounded-2xl shadow-sm p-8">
+          <div class="text-center mb-8">
+            <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                <path
+                  d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z" />
+              </svg>
+            </div>
+            <h2 class="text-3xl font-bold text-slate-800 mb-2">Tell us about your education</h2>
+            <p class="text-lg text-slate-600">Don't worry if you haven't finished - we value all learning!</p>
+          </div>
+
+          <div class="space-y-6">
+            <div>
+              <label class="block text-sm font-semibold text-slate-700 mb-2"> What's your highest education level? </label>
+              <select
+                id="education-level"
+                class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-lg"
+                onchange="handleEducationChange()">
+                <option value="">Select your education</option>
+                <option value="10th">10th Class (Matriculation)</option>
+                <option value="12th">12th Class (Higher Secondary)</option>
+                <option value="diploma">Diploma</option>
+                <option value="undergraduate">Bachelor's Degree (Pursuing/Completed)</option>
+                <option value="postgraduate">Master's Degree</option>
+                <option value="other">Other / Self-taught</option>
+              </select>
+
+              <!-- Hidden input box for "Other" -->
+              <input
+                type="text"
+                id="other-education"
+                placeholder="Please specify"
+                class="w-full mt-3 px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-lg hidden" />
+            </div>
+            <div id="stream-selection" class="hidden">
+              <label class="block text-sm font-semibold text-slate-700 mb-2">What field did you study?</label>
+              <select id="education-stream" class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-lg">
+                <option value>Select your field</option>
+                <option value="science">Science (PCM/PCB)</option>
+                <option value="commerce">Commerce</option>
+                <option value="arts">Arts/Humanities</option>
+                <option value="engineering">Engineering</option>
+                <option value="bca">Computer Applications (BCA/MCA)</option>
+                <option value="bba">Business Administration (BBA/MBA)</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="block text-sm font-semibold text-slate-700 mb-2">School/College name</label>
+              <div class="relative">
+                <input
+                  type="text"
+                  id="institution"
+                  class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-lg"
+                  placeholder="e.g., Government Senior Secondary School" />
+                <button type="button" class="absolute right-3 top-3 text-slate-400 hover:text-primary" onclick="startVoiceInput('institution')">
+                  <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                    <path
+                      fill-rule="evenodd"
+                      d="M7 4a3 3 0 016 0v4a3 3 0 11-6 0V4zm4 10.93A7.001 7.001 0 0017 8a1 1 0 10-2 0A5 5 0 015 8a1 1 0 00-2 0 7.001 7.001 0 006 6.93V17H6a1 1 0 100 2h8a1 1 0 100-2h-3v-2.07z"
+                      clip-rule="evenodd" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <label class="block text-sm font-semibold text-slate-700 mb-2">Year of passing (or expected)</label>
+                <select id="graduation-year" class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-lg">
+                  <option value>Select year</option>
+                  <option value="2025">2025</option>
+                  <option value="2024">2024</option>
+                  <option value="2023">2023</option>
+                  <option value="2022">2022</option>
+                  <option value="2021">2021</option>
+                  <option value="earlier">Earlier</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-sm font-semibold text-slate-700 mb-2">Percentage/CGPA (optional)</label>
+                <input
+                  type="text"
+                  id="marks"
+                  class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-lg"
+                  placeholder="e.g., 75% or 7.5 CGPA" />
+              </div>
+            </div>
+
+            <div class="bg-blue-50 border border-blue-200 rounded-lg p-4">
+              <div class="flex items-start">
+                <svg class="w-5 h-5 text-blue-500 mt-0.5 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" />
+                </svg>
+                <div>
+                  <h4 class="text-sm font-semibold text-blue-800 mb-1">Remember</h4>
+                  <p class="text-sm text-blue-700">Education is just one part of your story. Your practical skills, attitude, and willingness to learn matter more!</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-8 flex justify-between">
+            <button class="btn-secondary" onclick="prevStep(2)">← Back</button>
+            <button class="btn-primary" onclick="nextStep(2)">Continue →</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 3: Skills & Interests -->
+      <div class="profile-step" id="step-3">
+        <div class="bg-white rounded-2xl shadow-sm p-8">
+          <div class="text-center mb-8">
+            <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                <path
+                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+              </svg>
+            </div>
+            <h2 class="text-3xl font-bold text-slate-800 mb-2">What are your Skills</h2>
+            <p class="text-lg text-slate-600">Every skill counts - from technology to talking to people!</p>
+          </div>
+
+          <div class="space-y-8">
+            <!-- Technical Skills -->
+            <div>
+              <h3 class="text-xl font-semibold text-slate-800 mb-4">Technical Skills</h3>
+
+              <!-- Skill Tags -->
+              <div id="skills-container" class="flex flex-wrap gap-2 mb-4">
+                <div class="skill-tag" onclick="toggleSkill(this, 'microsoft-office')">Microsoft Office</div>
+                <div class="skill-tag" onclick="toggleSkill(this, 'excel')">Excel</div>
+                <div class="skill-tag" onclick="toggleSkill(this, 'internet')">Internet Research</div>
+                <div class="skill-tag" onclick="toggleSkill(this, 'typing')">Typing</div>
+                <div class="skill-tag" onclick="toggleSkill(this, 'social-media')">Social Media</div>
+                <div class="skill-tag" onclick="toggleSkill(this, 'photography')">Photography</div>
+              </div>
+
+              <!-- Add Other Skill -->
+              <div class="flex gap-2">
+                <input type="text" id="new-skill" placeholder="Add another skill..." class="flex-1 border border-slate-300 rounded-lg p-2 focus:ring-2 focus:ring-blue-500" />
+                <button type="button" onclick="addSkill()" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">Add</button>
+              </div>
+            </div>
+
+            <style>
+              .skill-tag {
+                padding: 6px 12px;
+                border: 1px solid #2563eb;
+                border-radius: 9999px;
+                cursor: pointer;
+                font-size: 0.9rem;
+                transition: all 0.2s;
+              }
+              .skill-tag:hover {
+                background: #eff6ff;
+              }
+              .skill-tag.selected {
+                background: #2563eb;
+                color: white;
+              }
+            </style>
+
+            <script>
+              function toggleSkill(el, skill) {
+                el.classList.toggle("selected");
+              }
+
+              function addSkill() {
+                const input = document.getElementById("new-skill");
+                const value = input.value.trim();
+                if (value) {
+                  const container = document.getElementById("skills-container");
+                  const div = document.createElement("div");
+                  div.className = "skill-tag selected";
+                  div.innerText = value;
+                  div.onclick = function () { toggleSkill(div, value.toLowerCase()); };
+                  container.appendChild(div);
+                  input.value = "";
+                }
+              }
+            </script>
+
+            <!-- Communication Skills -->
+            <div>
+              <h3 class="text-xl font-semibold text-slate-800 mb-4">Communication & People Skills</h3>
+              <div class="space-y-4">
+                <div class="bg-slate-50 rounded-lg p-4">
+                  <p class="font-medium text-slate-800 mb-2">Can you convince people to buy things? (Sales skill)</p>
+                  <div class="flex gap-3">
+                    <label class="flex items-center">
+                      <input type="radio" name="sales-skill" value="yes" class="mr-2" />
+                      <span>Yes, I'm good at it</span>
+                    </label>
+                    <label class="flex items-center">
+                      <input type="radio" name="sales-skill" value="learning" class="mr-2" />
+                      <span>I can learn</span>
+                    </label>
+                    <label class="flex items-center">
+                      <input type="radio" name="sales-skill" value="no" class="mr-2" />
+                      <span>Not my thing</span>
+                    </label>
+                  </div>
+                </div>
+
+                <div class="bg-slate-50 rounded-lg p-4">
+                  <p class="font-medium text-slate-800 mb-2">Do you enjoy teaching or explaining things to others?</p>
+                  <div class="flex gap-3">
+                    <label class="flex items-center">
+                      <input type="radio" name="teaching-skill" value="yes" class="mr-2" />
+                      <span>Yes, I love it</span>
+                    </label>
+                    <label class="flex items-center">
+                      <input type="radio" name="teaching-skill" value="sometimes" class="mr-2" />
+                      <span>Sometimes</span>
+                    </label>
+                    <label class="flex items-center">
+                      <input type="radio" name="teaching-skill" value="no" class="mr-2" />
+                      <span>Not really</span>
+                    </label>
+                  </div>
+                </div>
+
+                <div class="bg-slate-50 rounded-lg p-4">
+                  <p class="font-medium text-slate-800 mb-2">Are you comfortable speaking in groups?</p>
+                  <div class="flex gap-3">
+                    <label class="flex items-center">
+                      <input type="radio" name="public-speaking" value="confident" class="mr-2" />
+                      <span>Very confident</span>
+                    </label>
+                    <label class="flex items-center">
+                      <input type="radio" name="public-speaking" value="okay" class="mr-2" />
+                      <span>It's okay</span>
+                    </label>
+                    <label class="flex items-center">
+                      <input type="radio" name="public-speaking" value="nervous" class="mr-2" />
+                      <span>Makes me nervous</span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Languages -->
+            <div>
+              <h3 class="text-xl font-semibold text-slate-800 mb-4">Languages You Speak</h3>
+              <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+                <div class="skill-tag" onclick="toggleSkill(this, 'hindi')">
+                  <span>Hindi</span>
+                </div>
+                <div class="skill-tag" onclick="toggleSkill(this, 'english')">
+                  <span>English</span>
+                </div>
+                <div class="skill-tag" onclick="toggleSkill(this, 'marathi')">
+                  <span>Marathi</span>
+                </div>
+                <div class="skill-tag" onclick="toggleSkill(this, 'tamil')">
+                  <span>Tamil</span>
+                </div>
+                <div class="skill-tag" onclick="toggleSkill(this, 'telugu')">
+                  <span>Telugu</span>
+                </div>
+                <div class="skill-tag" onclick="toggleSkill(this, 'bengali')">
+                  <span>Bengali</span>
+                </div>
+                <div class="skill-tag" onclick="toggleSkill(this, 'gujarati')">
+                  <span>Gujarati</span>
+                </div>
+                <div class="skill-tag" onclick="toggleSkill(this, 'punjabi')">
+                  <span>Punjabi</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Life Skills from Traditional Backgrounds -->
+            <div>
+              <h3 class="text-xl font-semibold text-slate-800 mb-4">Life Skills & Experience</h3>
+              <div class="space-y-3">
+                <div class="bg-green-50 border border-green-200 rounded-lg p-4">
+                  <h4 class="font-medium text-green-800 mb-2">🌾 From Farming/Rural Background?</h4>
+                  <p class="text-sm text-green-700 mb-3">These are valuable business skills!</p>
+                  <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                    <div class="skill-tag" onclick="toggleSkill(this, 'planning')">
+                      <span>Planning & Organization</span>
+                    </div>
+                    <div class="skill-tag" onclick="toggleSkill(this, 'weather-analysis')">
+                      <span>Weather/Market Analysis</span>
+                    </div>
+                    <div class="skill-tag" onclick="toggleSkill(this, 'problem-solving')">
+                      <span>Problem Solving</span>
+                    </div>
+                    <div class="skill-tag" onclick="toggleSkill(this, 'hard-work')">
+                      <span>Hard Work & Persistence</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                  <h4 class="font-medium text-blue-800 mb-2">🏪 Family Business/Local Trade?</h4>
+                  <p class="text-sm text-blue-700 mb-3">You already have business skills!</p>
+                  <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                    <div class="skill-tag" onclick="toggleSkill(this, 'customer-service')">
+                      <span>Customer Service</span>
+                    </div>
+                    <div class="skill-tag" onclick="toggleSkill(this, 'money-handling')">
+                      <span>Money Handling</span>
+                    </div>
+                    <div class="skill-tag" onclick="toggleSkill(this, 'negotiation')">
+                      <span>Negotiation</span>
+                    </div>
+                    <div class="skill-tag" onclick="toggleSkill(this, 'inventory')">
+                      <span>Inventory Management</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="bg-purple-50 border border-purple-200 rounded-lg p-4">
+                  <h4 class="font-medium text-purple-800 mb-2">🏠 Household Management?</h4>
+                  <p class="text-sm text-purple-700 mb-3">These are project management skills!</p>
+                  <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                    <div class="skill-tag" onclick="toggleSkill(this, 'budget-management')">
+                      <span>Budget Management</span>
+                    </div>
+                    <div class="skill-tag" onclick="toggleSkill(this, 'time-management')">
+                      <span>Time Management</span>
+                    </div>
+                    <div class="skill-tag" onclick="toggleSkill(this, 'coordination')">
+                      <span>Coordination</span>
+                    </div>
+                    <div class="skill-tag" onclick="toggleSkill(this, 'multitasking')">
+                      <span>Multitasking</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Additional Skills -->
+            <div>
+              <label class="block text-sm font-semibold text-slate-700 mb-2">Any other skills or hobbies?</label>
+              <div class="relative">
+                <textarea
+                  id="additional-skills"
+                  rows="3"
+                  class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-lg"
+                  placeholder="e.g., Drawing, Cooking, Repairing things, Dancing, Sports..."></textarea>
+                <button type="button" class="absolute right-3 top-3 text-slate-400 hover:text-primary" onclick="startVoiceInput('additional-skills')">
+                  <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                    <path
+                      fill-rule="evenodd"
+                      d="M7 4a3 3 0 016 0v4a3 3 0 11-6 0V4zm4 10.93A7.001 7.001 0 0017 8a1 1 0 10-2 0A5 5 0 015 8a1 1 0 00-2 0 7.001 7.001 0 006 6.93V17H6a1 1 0 100 2h8a1 1 0 100-2h-3v-2.07z"
+                      clip-rule="evenodd" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-8 flex justify-between">
+            <button class="btn-secondary" onclick="prevStep(3)">← Back</button>
+            <button class="btn-primary" onclick="nextStep(3)">Continue →</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 4: Experience & Family Situation -->
+      <div class="profile-step" id="step-4">
+        <div class="bg-white rounded-2xl shadow-sm p-8">
+          <div class="text-center mb-8">
+            <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                <path
+                  fill-rule="evenodd"
+                  d="M6 6V5a3 3 0 013-3h2a3 3 0 013 3v1h2a2 2 0 012 2v3.57A22.952 22.952 0 0110 13a22.95 22.95 0 01-8-1.43V8a2 2 0 012-2h2zm2-1a1 1 0 011-1h2a1 1 0 011 1v1H8V5zm1 5a1 1 0 011-1h.01a1 1 0 110 2H10a1 1 0 01-1-1z"
+                  clip-rule="evenodd" />
+                <path d="M2 13.692V16a2 2 0 002 2h12a2 2 0 002-2v-2.308A24.974 24.974 0 0110 15c-2.796 0-5.487-.46-8-1.308z" />
+              </svg>
+            </div>
+            <h2 class="text-3xl font-bold text-slate-800 mb-2">Experience & Situation</h2>
+            <p class="text-lg text-slate-600">Help us understand your background and constraints</p>
+          </div>
+
+          <div class="space-y-8">
+            <!-- Work Experience -->
+            <div>
+              <h3 class="text-xl font-semibold text-slate-800 mb-4">Any work experience?</h3>
+              <div class="space-y-4">
+                <div class="bg-slate-50 rounded-lg p-4">
+                  <p class="font-medium text-slate-800 mb-3">Have you done any of these before?</p>
+                  <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    <label class="flex items-center">
+                      <input type="checkbox" value="part-time-job" class="mr-2 experience-checkbox" />
+                      <span>Part-time job</span>
+                    </label>
+                    <label class="flex items-center">
+                      <input type="checkbox" value="family-business" class="mr-2 experience-checkbox" />
+                      <span>Helped in family business</span>
+                    </label>
+                    <label class="flex items-center">
+                      <input type="checkbox" value="freelance" class="mr-2 experience-checkbox" />
+                      <span>Freelance work</span>
+                    </label>
+                    <label class="flex items-center">
+                      <input type="checkbox" value="volunteer" class="mr-2 experience-checkbox" />
+                      <span>Volunteer work</span>
+                    </label>
+                    <label class="flex items-center">
+                      <input type="checkbox" value="tuition" class="mr-2 experience-checkbox" />
+                      <span>Teaching/Tuition</span>
+                    </label>
+                    <label class="flex items-center">
+                      <input type="checkbox" value="online-work" class="mr-2 experience-checkbox" />
+                      <span>Online work</span>
+                    </label>
+                  </div>
+                </div>
+
+                <div>
+                  <label class="block text-sm font-semibold text-slate-700 mb-2">Tell us more about your work experience</label>
+                  <div class="relative">
+                    <textarea
+                      id="work-experience"
+                      rows="3"
+                      class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-lg"
+                      placeholder="e.g., Helped customers in our family store for 2 years, learned to handle money and talk to different people..."></textarea>
+                    <button type="button" class="absolute right-3 top-3 text-slate-400 hover:text-primary" onclick="startVoiceInput('work-experience')">
+                      <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                        <path
+                          fill-rule="evenodd"
+                          d="M7 4a3 3 0 016 0v4a3 3 0 11-6 0V4zm4 10.93A7.001 7.001 0 0017 8a1 1 0 10-2 0A5 5 0 015 8a1 1 0 00-2 0 7.001 7.001 0 006 6.93V17H6a1 1 0 100 2h8a1 1 0 100-2h-3v-2.07z"
+                          clip-rule="evenodd" />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Family Situation -->
+            <div class="bg-orange-50 border border-orange-200 rounded-lg p-6">
+              <h3 class="text-xl font-semibold text-orange-800 mb-4">Family Situation & Preferences</h3>
+              <p class="text-sm text-orange-700 mb-4">We respect your family situation and will find opportunities that work for you.</p>
+
+              <div class="space-y-4">
+                <div>
+                  <p class="font-medium text-slate-800 mb-2">Location preference</p>
+                  <div class="space-y-2">
+                    <label class="flex items-center">
+                      <input type="radio" name="location-preference" value="local" class="mr-2" />
+                      <span>Must stay in my city (family responsibilities)</span>
+                    </label>
+                    <label class="flex items-center">
+                      <input type="radio" name="location-preference" value="nearby" class="mr-2" />
+                      <span>Can work in nearby cities</span>
+                    </label>
+                    <label class="flex items-center">
+                      <input type="radio" name="location-preference" value="anywhere" class="mr-2" />
+                      <span>Open to work anywhere in India</span>
+                    </label>
+                    <label class="flex items-center">
+                      <input type="radio" name="location-preference" value="remote" class="mr-2" />
+                      <span>Prefer remote work</span>
+                    </label>
+                  </div>
+                </div>
+
+                <div>
+                  <p class="font-medium text-slate-800 mb-2">Financial needs</p>
+                  <div class="space-y-2">
+                    <label class="flex items-center">
+                      <input type="radio" name="financial-needs" value="urgent" class="mr-2" />
+                      <span>Need to earn money urgently</span>
+                    </label>
+                    <label class="flex items-center">
+                      <input type="radio" name="financial-needs" value="some-income" class="mr-2" />
+                      <span>Want some income while learning</span>
+                    </label>
+                    <label class="flex items-center">
+                      <input type="radio" name="financial-needs" value="learning-focus" class="mr-2" />
+                      <span>Focused on learning, income not urgent</span>
+                    </label>
+                  </div>
+                </div>
+
+                <div>
+                  <p class="font-medium text-slate-800 mb-2">Time availability</p>
+                  <div class="space-y-2">
+                    <label class="flex items-center">
+                      <input type="radio" name="time-availability" value="full-time" class="mr-2" />
+                      <span>Full-time (8-9 hours/day)</span>
+                    </label>
+                    <label class="flex items-center">
+                      <input type="radio" name="time-availability" value="part-time" class="mr-2" />
+                      <span>Part-time (4-5 hours/day)</span>
+                    </label>
+                    <label class="flex items-center">
+                      <input type="radio" name="time-availability" value="flexible" class="mr-2" />
+                      <span>Flexible hours</span>
+                    </label>
+                    <label class="flex items-center">
+                      <input type="radio" name="time-availability" value="weekends" class="mr-2" />
+                      <span>Only weekends</span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-8 flex justify-between">
+            <button class="btn-secondary" onclick="prevStep(4)">← Back</button>
+            <button class="btn-primary" onclick="nextStep(4)">Continue →</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 5: Career Goals -->
+      <div class="profile-step" id="step-5">
+        <div class="bg-white rounded-2xl shadow-sm p-8">
+          <div class="text-center mb-8">
+            <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                <path
+                  fill-rule="evenodd"
+                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.293l-3-3a1 1 0 00-1.414 0l-3 3a1 1 0 001.414 1.414L9 9.414V13a1 1 0 102 0V9.414l1.293 1.293a1 1 0 001.414-1.414z"
+                  clip-rule="evenodd" />
+              </svg>
+            </div>
+            <h2 class="text-3xl font-bold text-slate-800 mb-2">What's your Goal?</h2>
+            <p class="text-lg text-slate-600">Tell us about your career goals and aspirations</p>
+          </div>
+
+          <div class="space-y-6">
+            <div>
+              <p class="text-lg font-semibold text-slate-800 mb-4">What type of work interests you most?</p>
+             <div>
+  <h3 class="text-xl font-semibold text-slate-800 mb-4">Career Interests</h3>
+
+  <!-- Career Options -->
+  <div id="career-container" class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+    <div class="career-option" onclick="toggleCareer(this, 'technology')">
+      <div class="flex items-center mb-3">
+        <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mr-3">
+          <svg class="w-6 h-6 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M3 5a2 2 0 012-2h10a2 2 0 012 2v8a2 2 0 01-2 2h-2.22l.123.489.804.804A1 1 0 0113 18H7a1 1 0 01-.707-1.707l.804-.804L7.22 15H5a2 2 0 01-2-2V5zm5.771 7H5V5h10v7H8.771z" clip-rule="evenodd" />
+          </svg>
+        </div>
+        <h3 class="font-semibold">Technology & IT</h3>
+      </div>
+      <p class="text-sm text-slate-600">Software development, websites, apps, data analysis</p>
+    </div>
+
+    <div class="career-option" onclick="toggleCareer(this, 'business')">
+      <div class="flex items-center mb-3">
+        <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mr-3">
+          <svg class="w-6 h-6 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M4 4a2 2 0 00-2 2v4a2 2 0 002 2V6h10a2 2 0 00-2-2H4zm2 6a2 2 0 012-2h8a2 2 0 012 2v4a2 2 0 01-2 2H8a2 2 0 01-2-2v-4zm6 4a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
+          </svg>
+        </div>
+        <h3 class="font-semibold">Business & Sales</h3>
+      </div>
+      <p class="text-sm text-slate-600">Sales, marketing, business development, consulting</p>
+    </div>
+
+    <div class="career-option" onclick="toggleCareer(this, 'creative')">
+      <div class="flex items-center mb-3">
+        <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mr-3">
+          <svg class="w-6 h-6 text-purple-600" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clip-rule="evenodd" />
+          </svg>
+        </div>
+        <h3 class="font-semibold">Creative & Design</h3>
+      </div>
+      <p class="text-sm text-slate-600">Graphic design, content creation, photography, video</p>
+    </div>
+
+    <div class="career-option" onclick="toggleCareer(this, 'operations')">
+      <div class="flex items-center mb-3">
+        <div class="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mr-3">
+          <svg class="w-6 h-6 text-orange-600" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd" />
+          </svg>
+        </div>
+        <h3 class="font-semibold">Operations & Support</h3>
+      </div>
+      <p class="text-sm text-slate-600">Customer support, operations, administration, HR</p>
+    </div>
+  </div>
+
+  <!-- Add Other Career -->
+  <div class="flex gap-2">
+    <input type="text" id="new-career" placeholder="Add another career interest..."
+           class="flex-1 border border-slate-300 rounded-lg p-2 focus:ring-2 focus:ring-blue-500">
+    <button type="button" onclick="addCareer()"
+            class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">
+      Add
+    </button>
+  </div>
+</div>
+
+<style>
+  .career-option {
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .career-option:hover {
+    border-color: #2563eb;
+    background: #f0f7ff;
+  }
+  .career-option.selected {
+    border-color: #2563eb;
+    background: #2563eb;
+    color: white;
+  }
+  .career-option.selected h3,
+  .career-option.selected p,
+  .career-option.selected svg {
+    color: white;
+  }
+</style>
+
+<script>
+  function toggleCareer(el, career) {
+    el.classList.toggle("selected");
+  }
+
+  function addCareer() {
+    const input = document.getElementById("new-career");
+    const value = input.value.trim();
+    if (value) {
+      const container = document.getElementById("career-container");
+      const div = document.createElement("div");
+      div.className = "career-option selected p-4";
+      div.innerHTML = `<h3 class="font-semibold">${value}</h3>`;
+      div.onclick = function () { toggleCareer(div, value.toLowerCase()); };
+      container.appendChild(div);
+      input.value = "";
+    }
+  }
+</script>
+            <div>
+              <label class="block text-lg font-semibold text-slate-700 mb-4">What do you want to achieve in the next 2 years?</label>
+              <div class="space-y-3">
+                <label class="flex items-start p-3 border border-slate-200 rounded-lg hover:bg-slate-50 cursor-pointer">
+                  <input type="checkbox" value="learn-new-skills" class="mt-1 mr-3 goal-checkbox" />
+                  <div>
+                    <span class="font-medium">Learn new skills</span>
+                    <p class="text-sm text-slate-600">Develop technical or professional skills</p>
+                  </div>
+                </label>
+                <label class="flex items-start p-3 border border-slate-200 rounded-lg hover:bg-slate-50 cursor-pointer">
+                  <input type="checkbox" value="earn-money" class="mt-1 mr-3 goal-checkbox" />
+                  <div>
+                    <span class="font-medium">Earn good money</span>
+                    <p class="text-sm text-slate-600">Build financial stability</p>
+                  </div>
+                </label>
+                <label class="flex items-start p-3 border border-slate-200 rounded-lg hover:bg-slate-50 cursor-pointer">
+                  <input type="checkbox" value="full-time-job" class="mt-1 mr-3 goal-checkbox" />
+                  <div>
+                    <span class="font-medium">Get a full-time job</span>
+                    <p class="text-sm text-slate-600">Secure permanent employment</p>
+                  </div>
+                </label>
+                <label class="flex items-start p-3 border border-slate-200 rounded-lg hover:bg-slate-50 cursor-pointer">
+                  <input type="checkbox" value="start-business" class="mt-1 mr-3 goal-checkbox" />
+                  <div>
+                    <span class="font-medium">Start my own business</span>
+                    <p class="text-sm text-slate-600">Become an entrepreneur</p>
+                  </div>
+                </label>
+                <label class="flex items-start p-3 border border-slate-200 rounded-lg hover:bg-slate-50 cursor-pointer">
+                  <input type="checkbox" value="help-family" class="mt-1 mr-3 goal-checkbox" />
+                  <div>
+                    <span class="font-medium">Help my family</span>
+                    <p class="text-sm text-slate-600">Support family financially</p>
+                  </div>
+                </label>
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-sm font-semibold text-slate-700 mb-2">Any specific dreams or goals?</label>
+              <div class="relative">
+                <textarea
+                  id="career-goals"
+                  rows="3"
+                  class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-lg"
+                  placeholder="e.g., I want to learn computer skills and help other students from my village get jobs too..."></textarea>
+                <button type="button" class="absolute right-3 top-3 text-slate-400 hover:text-primary" onclick="startVoiceInput('career-goals')">
+                  <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                    <path
+                      fill-rule="evenodd"
+                      d="M7 4a3 3 0 016 0v4a3 3 0 11-6 0V4zm4 10.93A7.001 7.001 0 0017 8a1 1 0 10-2 0A5 5 0 015 8a1 1 0 00-2 0 7.001 7.001 0 006 6.93V17H6a1 1 0 100 2h8a1 1 0 100-2h-3v-2.07z"
+                      clip-rule="evenodd" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-8 flex justify-between">
+            <button class="btn-secondary" onclick="prevStep(5)">← Back</button>
+            <button class="btn-primary" onclick="generateProfile()">Generate My Profile →</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Profile Preview -->
+      <div class="profile-step" id="profile-preview">
+        <div class="bg-white rounded-2xl shadow-sm p-8">
+          <div class="text-center mb-8">
+            <div class="w-16 h-16 bg-success-500 rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                <path
+                  fill-rule="evenodd"
+                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                  clip-rule="evenodd" />
+              </svg>
+            </div>
+            <h2 class="text-3xl font-bold text-slate-800 mb-2">Your Profile is Ready! 🎉</h2>
+            <p class="text-lg text-slate-600">Here's how employers will see your profile</p>
+          </div>
+
+          <div class="bg-gradient-to-br from-blue-50 to-purple-50 rounded-xl p-6 mb-8">
+            <div class="flex items-center mb-4">
+              <div class="w-20 h-20 bg-primary rounded-full flex items-center justify-center text-white text-2xl font-bold mr-4" id="profile-avatar">PS</div>
+              <div>
+                <h3 class="text-2xl font-bold text-slate-800" id="preview-name">Priya Sharma</h3>
+                <p class="text-slate-600" id="preview-location">Kanpur, Uttar Pradesh</p>
+                <p class="text-slate-600" id="preview-education">12th Pass, Commerce Stream</p>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+              <div>
+                <h4 class="font-semibold text-slate-800 mb-2">🎯 Career Interest</h4>
+                <p id="preview-career-interest" class="text-slate-700">Business & Sales</p>
+              </div>
+              <div>
+                <h4 class="font-semibold text-slate-800 mb-2">💼 Experience</h4>
+                <p id="preview-experience" class="text-slate-700">Family business experience</p>
+              </div>
+            </div>
+
+            <div class="mb-6">
+              <h4 class="font-semibold text-slate-800 mb-2">⭐ Key Strengths</h4>
+              <div class="flex flex-wrap gap-2" id="preview-skills">
+                <span class="px-3 py-1 bg-primary-100 text-primary-700 text-sm rounded-full">Customer Service</span>
+                <span class="px-3 py-1 bg-primary-100 text-primary-700 text-sm rounded-full">Hindi & English</span>
+                <span class="px-3 py-1 bg-primary-100 text-primary-700 text-sm rounded-full">Money Handling</span>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <h4 class="font-semibold text-slate-800 mb-2">📍 Work Preference</h4>
+                <p id="preview-work-pref" class="text-slate-700">Local opportunities preferred</p>
+              </div>
+              <div>
+                <h4 class="font-semibold text-slate-800 mb-2">🕒 Availability</h4>
+                <p id="preview-availability" class="text-slate-700">Full-time (8-9 hours)</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-green-50 border border-green-200 rounded-lg p-6 mb-8">
+            <div class="flex items-start">
+              <svg class="w-6 h-6 text-green-600 mt-0.5 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                <path
+                  fill-rule="evenodd"
+                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                  clip-rule="evenodd" />
+              </svg>
+              <div>
+                <h4 class="text-lg font-semibold text-green-800 mb-2">Great News!</h4>
+                <p class="text-green-700 mb-4">Based on your profile, we found <strong id="matching-opportunities">12 matching opportunities</strong> in your area!</p>
+                <div class="space-y-2">
+                  <div class="flex items-center text-sm text-green-700">
+                    <span class="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
+                    <span>3 immediate openings in sales/customer service</span>
+                  </div>
+                  <div class="flex items-center text-sm text-green-700">
+                    <span class="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
+                    <span>5 training programs with job guarantee</span>
+                  </div>
+                  <div class="flex items-center text-sm text-green-700">
+                    <span class="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
+                    <span>4 part-time opportunities with flexible timing</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <button class="btn-primary" onclick="window.location.href='ai_recommendation_dashboard.html'">View My Matches →</button>
+            <button class="btn-secondary" onclick="prevStep(6)">← Edit Profile</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Ask for Help Button -->
+    <div class="fixed bottom-6 right-6 z-50">
+      <button class="bg-accent hover:bg-accent-600 text-white rounded-full p-4 shadow-lg transition-all transform hover:scale-105" onclick="showHelpOptions()">
+        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+          <path
+            fill-rule="evenodd"
+            d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z"
+            clip-rule="evenodd" />
+        </svg>
+      </button>
+    </div>
+
+    <!-- Help Options Modal -->
+    <div class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden" id="help-modal">
+      <div class="flex items-center justify-center min-h-screen p-4">
+        <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-modal">
+          <div class="text-center mb-6">
+            <h3 class="text-2xl font-bold text-slate-800 mb-2">Need Help?</h3>
+            <p class="text-slate-600">We're here to support you!</p>
+          </div>
+
+          <div class="space-y-3">
+            <button class="w-full flex items-center p-4 border border-slate-200 rounded-lg hover:bg-green-50 hover:border-green-300 transition-all" onclick="contactWhatsApp()">
+              <svg class="w-8 h-8 text-green-500 mr-3" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.506" />
+              </svg>
+              <div class="text-left">
+                <div class="font-semibold text-slate-800">WhatsApp Support</div>
+                <div class="text-sm text-slate-600">Chat with our helper</div>
+              </div>
+            </button>
+
+            <button class="w-full flex items-center p-4 border border-slate-200 rounded-lg hover:bg-blue-50 hover:border-blue-300 transition-all" onclick="callSupport()">
+              <svg class="w-8 h-8 text-blue-500 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                <path
+                  d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+              </svg>
+              <div class="text-left">
+                <div class="font-semibold text-slate-800">Call Us</div>
+                <div class="text-sm text-slate-600">1800-123-4567 (Free)</div>
+              </div>
+            </button>
+
+            <button class="w-full flex items-center p-4 border border-slate-200 rounded-lg hover:bg-purple-50 hover:border-purple-300 transition-all" onclick="requestCallback()">
+              <svg class="w-8 h-8 text-purple-500 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                <path
+                  fill-rule="evenodd"
+                  d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z"
+                  clip-rule="evenodd" />
+              </svg>
+              <div class="text-left">
+                <div class="font-semibold text-slate-800">Request Callback</div>
+                <div class="text-sm text-slate-600">We'll call you back</div>
+              </div>
+            </button>
+          </div>
+
+          <button class="absolute top-4 right-4 text-slate-400 hover:text-slate-600" onclick="closeHelpModal()">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Voice Recording Modal -->
+    <div class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden" id="voice-modal">
+      <div class="flex items-center justify-center min-h-screen p-4">
+        <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-modal">
+          <div class="text-center">
+            <div class="w-20 h-20 bg-red-500 rounded-full flex items-center justify-center mx-auto mb-4 animate-pulse" id="recording-indicator">
+              <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                <path
+                  fill-rule="evenodd"
+                  d="M7 4a3 3 0 016 0v4a3 3 0 11-6 0V4zm4 10.93A7.001 7.001 0 0017 8a1 1 0 10-2 0A5 5 0 015 8a1 1 0 00-2 0 7.001 7.001 0 006 6.93V17H6a1 1 0 100 2h8a1 1 0 100-2h-3v-2.07z"
+                  clip-rule="evenodd" />
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-slate-800 mb-2">Listening...</h3>
+            <p class="text-slate-600 mb-4" id="voice-language">Speak in Hindi or English</p>
+            <p class="text-sm text-slate-500 mb-6">We're converting your speech to text</p>
+            <button class="btn-secondary" onclick="stopVoiceInput()">Stop Recording</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Profile builder state
+      let currentStep = 1;
+      let profileData = {};
+      let selectedSkills = [];
+      let selectedLanguage = 'hi-IN';
+      let currentVoiceField = '';
+
+      // Mobile menu toggle
+      document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+          const mobileMenu = document.getElementById('mobile-menu');
+          mobileMenu.classList.toggle('hidden');
+      });
+
+      // Progress updates
+      const progressMessages = [
+          "Great start! Let's learn about you...",
+          "Perfect! Now about your education...",
+          "Amazing! Tell us about your skills...",
+          "Excellent! Share your experience...",
+          "Almost done! What are your goals?",
+          "Fantastic! Your profile is ready!"
+      ];
+
+      function updateProgress(step) {
+          const progressBar = document.getElementById('progress-bar');
+          const progressText = document.getElementById('progress-text');
+          const motivationalMessage = document.getElementById('motivational-message');
+
+          const percentage = (step / 5) * 100;
+          progressBar.style.width = percentage + '%';
+          progressText.textContent = `Step ${step} of 5`;
+          motivationalMessage.textContent = progressMessages[step - 1];
+      }
+
+      function showStep(step) {
+          // Hide all steps
+          document.querySelectorAll('.profile-step').forEach(s => s.classList.remove('active'));
+
+          // Show current step
+          document.getElementById(`step-${step}`).classList.add('active');
+
+          if (step <= 5) {
+              updateProgress(step);
+          }
+      }
+
+      function nextStep(step) {
+          if (validateStep(step)) {
+              saveStepData(step);
+              currentStep = step + 1;
+
+              if (currentStep <= 6) {
+                  showStep(currentStep);
+              }
+          }
+      }
+
+      function prevStep(step) {
+          currentStep = step - 1;
+          showStep(currentStep);
+      }
+
+      function validateStep(step) {
+          switch(step) {
+              case 1:
+                  const name = document.getElementById('full-name').value;
+                  const age = document.getElementById('age').value;
+                  const location = document.getElementById('location').value;
+                  const phone = document.getElementById('phone').value;
+
+                  if (!name || !age || !location || !phone) {
+                      alert('Please fill in all required fields');
+                      return false;
+                  }
+                  break;
+
+              case 2:
+                  const education = document.getElementById('education-level').value;
+                  const institution = document.getElementById('institution').value;
+
+                  if (!education || !institution) {
+                      alert('Please complete your education information');
+                      return false;
+                  }
+                  break;
+
+              default:
+                  return true;
+          }
+          return true;
+      }
+
+      function saveStepData(step) {
+          switch(step) {
+              case 1:
+                  profileData.name = document.getElementById('full-name').value;
+                  profileData.age = document.getElementById('age').value;
+                  profileData.location = document.getElementById('location').value;
+                  profileData.phone = document.getElementById('phone').value;
+                  profileData.email = document.getElementById('email').value;
+                  break;
+
+              case 2:
+                  profileData.education = document.getElementById('education-level').value;
+                  profileData.stream = document.getElementById('education-stream').value;
+                  profileData.institution = document.getElementById('institution').value;
+                  profileData.graduationYear = document.getElementById('graduation-year').value;
+                  profileData.marks = document.getElementById('marks').value;
+                  break;
+
+              case 3:
+                  profileData.skills = selectedSkills;
+                  profileData.salesSkill = document.querySelector('input[name="sales-skill"]:checked')?.value;
+                  profileData.teachingSkill = document.querySelector('input[name="teaching-skill"]:checked')?.value;
+                  profileData.publicSpeaking = document.querySelector('input[name="public-speaking"]:checked')?.value;
+                  profileData.additionalSkills = document.getElementById('additional-skills').value;
+                  break;
+
+              case 4:
+                  profileData.experience = Array.from(document.querySelectorAll('.experience-checkbox:checked')).map(cb => cb.value);
+                  profileData.workExperience = document.getElementById('work-experience').value;
+                  profileData.locationPreference = document.querySelector('input[name="location-preference"]:checked')?.value;
+                  profileData.financialNeeds = document.querySelector('input[name="financial-needs"]:checked')?.value;
+                  profileData.timeAvailability = document.querySelector('input[name="time-availability"]:checked')?.value;
+                  break;
+
+              case 5:
+                  profileData.careerPath = document.querySelector('.career-option.selected')?.dataset.path;
+                  profileData.goals = Array.from(document.querySelectorAll('.goal-checkbox:checked')).map(cb => cb.value);
+                  profileData.careerGoals = document.getElementById('career-goals').value;
+                  break;
+          }
+      }
+
+      // Skills selection
+      function toggleSkill(element, skill) {
+          element.classList.toggle('selected');
+
+          if (selectedSkills.includes(skill)) {
+              selectedSkills = selectedSkills.filter(s => s !== skill);
+          } else {
+              selectedSkills.push(skill);
+          }
+      }
+
+      // Career path selection
+      function selectCareerPath(element, path) {
+          document.querySelectorAll('.career-option').forEach(opt => opt.classList.remove('selected'));
+          element.classList.add('selected');
+          element.dataset.path = path;
+      }
+
+      // Education level change handler
+      function handleEducationChange() {
+          const education = document.getElementById('education-level').value;
+          const streamSelection = document.getElementById('stream-selection');
+
+          if (education && education !== 'other') {
+              streamSelection.classList.remove('hidden');
+          } else {
+              streamSelection.classList.add('hidden');
+          }
+      }
+
+      // Language selection
+      function selectLanguage(lang, langName) {
+          selectedLanguage = lang;
+          document.getElementById('voice-language').textContent = `Speak in ${langName}`;
+          closeLanguageModal();
+      }
+
+      function closeLanguageModal() {
+          document.getElementById('language-modal').style.display = 'none';
+      }
+
+      // Voice input functionality
+      function startVoiceInput(fieldId) {
+          if (!('webkitSpeechRecognition' in window)) {
+              alert('Voice input is not supported in your browser. Please type instead.');
+              return;
+          }
+
+          // Show language modal first if not selected
+          if (!selectedLanguage) {
+              document.getElementById('language-modal').style.display = 'flex';
+              currentVoiceField = fieldId;
+              return;
+          }
+
+          currentVoiceField = fieldId;
+          document.getElementById('voice-modal').classList.remove('hidden');
+
+          const recognition = new webkitSpeechRecognition();
+          recognition.lang = selectedLanguage;
+          recognition.continuous = false;
+          recognition.interimResults = false;
+
+          recognition.start();
+
+          recognition.onresult = function(event) {
+              const transcript = event.results[0][0].transcript;
+              const field = document.getElementById(currentVoiceField);
+
+              if (field.tagName === 'TEXTAREA' || field.tagName === 'INPUT') {
+                  field.value = transcript;
+              }
+
+              stopVoiceInput();
+          };
+
+          recognition.onerror = function() {
+              alert('Voice input failed. Please try typing instead.');
+              stopVoiceInput();
+          };
+
+          recognition.onend = function() {
+              stopVoiceInput();
+          };
+      }
+
+      function stopVoiceInput() {
+          document.getElementById('voice-modal').classList.add('hidden');
+      }
+
+      // Help functionality
+      function showHelpOptions() {
+          document.getElementById('help-modal').classList.remove('hidden');
+      }
+
+      function closeHelpModal() {
+          document.getElementById('help-modal').classList.add('hidden');
+      }
+
+      function contactWhatsApp() {
+          const phone = profileData.phone || '';
+          const message = `Hi! I need help completing my profile on InternMatch AI. My name is ${profileData.name || 'User'} and I'm at step ${currentStep}.`;
+          window.open(`https://wa.me/919876543210?text=${encodeURIComponent(message)}`, '_blank');
+      }
+
+      function callSupport() {
+          window.open('tel:+18001234567');
+      }
+
+      function requestCallback() {
+          alert('Thank you! We will call you back within 10 minutes on ' + (profileData.phone || 'your registered number'));
+          closeHelpModal();
+      }
+
+      // Generate profile and preview
+      function generateProfile() {
+          saveStepData(5);
+
+          // Update profile preview with actual data
+          document.getElementById('preview-name').textContent = profileData.name;
+          document.getElementById('preview-location').textContent = profileData.location;
+
+          let educationText = profileData.education;
+          if (profileData.stream) {
+              educationText += `, ${profileData.stream}`;
+          }
+          document.getElementById('preview-education').textContent = educationText;
+
+          // Career interest
+          const careerMap = {
+              'technology': 'Technology & IT',
+              'business': 'Business & Sales',
+              'creative': 'Creative & Design',
+              'operations': 'Operations & Support'
+          };
+          document.getElementById('preview-career-interest').textContent = careerMap[profileData.careerPath] || 'Various fields';
+
+          // Experience
+          if (profileData.workExperience) {
+              document.getElementById('preview-experience').textContent = profileData.workExperience.substring(0, 50) + '...';
+          }
+
+          // Skills
+          const skillsContainer = document.getElementById('preview-skills');
+          skillsContainer.innerHTML = '';
+          selectedSkills.slice(0, 6).forEach(skill => {
+              const skillBadge = document.createElement('span');
+              skillBadge.className = 'px-3 py-1 bg-primary-100 text-primary-700 text-sm rounded-full';
+              skillBadge.textContent = skill.replace('-', ' ').replace(/\b\w/g, l => l.toUpperCase());
+              skillsContainer.appendChild(skillBadge);
+          });
+
+          // Work preference
+          const prefMap = {
+              'local': 'Local opportunities preferred',
+              'nearby': 'Nearby cities acceptable',
+              'anywhere': 'Open to work anywhere',
+              'remote': 'Remote work preferred'
+          };
+          document.getElementById('preview-work-pref').textContent = prefMap[profileData.locationPreference] || 'Flexible';
+
+          // Availability
+          const availMap = {
+              'full-time': 'Full-time (8-9 hours)',
+              'part-time': 'Part-time (4-5 hours)',
+              'flexible': 'Flexible hours',
+              'weekends': 'Weekends only'
+          };
+          document.getElementById('preview-availability').textContent = availMap[profileData.timeAvailability] || 'Flexible';
+
+          // Avatar initials
+          const initials = profileData.name.split(' ').map(n => n[0]).join('').toUpperCase();
+          document.getElementById('profile-avatar').textContent = initials;
+
+          // Show profile preview
+          currentStep = 6;
+          showStep(6);
+          document.getElementById('step-6') = document.getElementById('profile-preview');
+          document.getElementById('profile-preview').classList.add('active');
+      }
+
+      // Initialize
+      window.onload = function() {
+          showStep(1);
+
+          // Show language modal on first load
+          setTimeout(() => {
+              if ('webkitSpeechRecognition' in window) {
+                  document.getElementById('language-modal').style.display = 'flex';
+              }
+          }, 1000);
+      };
+    </script>
+
+    <style>
+      .profile-step {
+          display: none;
+      }
+
+      .profile-step.active {
+          display: block;
+      }
+
+      .skill-tag {
+          @apply px-4 py-2 bg-slate-100 border border-slate-200 rounded-lg text-sm font-medium text-slate-700 cursor-pointer transition-all hover:bg-slate-200;
+      }
+
+      .skill-tag.selected {
+          @apply bg-primary-100 border-primary-300 text-primary-700;
+      }
+
+      .career-option {
+          @apply p-4 border border-slate-200 rounded-lg cursor-pointer transition-all hover:border-primary hover:bg-primary-50;
+      }
+
+      .career-option.selected {
+          @apply border-primary-500 bg-primary-50;
+      }
+
+      .btn-primary {
+          @apply bg-primary hover:bg-primary-700 text-white px-6 py-3 rounded-lg font-semibold transition-all;
+      }
+
+      .btn-secondary {
+          @apply bg-slate-200 hover:bg-slate-300 text-slate-700 px-6 py-3 rounded-lg font-semibold transition-all;
+      }
+    </style>
+    <script id="dhws-dataInjector" src="../public/dhws-data-injector.js"></script>
+    <script>
+      function handleEducationChange() {
+        const select = document.getElementById("education-level");
+        const otherInput = document.getElementById("other-education");
+
+        if (select.value === "other") {
+          otherInput.classList.remove("hidden");
+        } else {
+          otherInput.classList.add("hidden");
+          otherInput.value = ""; // clear previous text
+        }
+      }
+    </script>
+  </body>
+</html>

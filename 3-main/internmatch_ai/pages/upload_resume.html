@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Upload Resume - AvsarX</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-gray-50 flex flex-col min-h-screen">
+    <!-- Navbar -->
+    <header class="bg-white shadow">
+      <div class="container mx-auto flex justify-between items-center py-4 px-6">
+        <!-- Left side: Logo -->
+        <div class="flex items-center">
+          <img src="AvsarX-2-removebg-preview.png" alt="AvsarX Logo" class="h-8 w-8 mr-2" />
+          <span class="text-xl font-bold text-blue-600 font-accent">AvsarX</span>
+        </div>
+        <!-- Right side: Nav links + Build Profile -->
+        <nav>
+          <ul class="flex space-x-6 text-gray-700 font-medium items-center">
+            <li><a href="../index.html" class="hover:text-blue-600">Home</a></li>
+            <li><a href="opportunity_explorer.html" class="hover:text-blue-600">Opportunities</a></li>
+            <li><a href="company_profiles.html" class="hover:text-blue-600">Companies</a></li>
+            <li>
+              <a href="profile_builder.html" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700"> Build Profile </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="bg-blue-600 text-white py-16">
+      <div class="container mx-auto text-center">
+        <h2 class="text-4xl font-bold mb-4">Upload Your Resume</h2>
+        <p class="text-lg">Get personalized internship recommendations based on your skills.</p>
+      </div>
+    </section>
+
+    <!-- Upload Form Section -->
+    <main class="flex-grow flex items-center justify-center py-12">
+      <div class="bg-white p-8 rounded-xl shadow-lg w-full max-w-md text-center">
+        <form>
+          <input type="file" class="border border-gray-300 rounded-md w-full p-2 mb-4" />
+          <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700">Get Recommendations</button>
+        </form>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-100 text-center py-4 text-gray-600">© 2025 AvsarX. All Rights Reserved.</footer>
+  </body>
+</html>
